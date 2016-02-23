@@ -1,0 +1,39 @@
+@import "../css/reset";
+
+@import "./variables.scss";
+
+body {
+    background-color: $container_background;
+    padding: 50px;
+    font-family: Roboto, sans-serif;
+    color: $text_color;
+    font-weight: 300;
+}
+
+header, main, footer {
+    background-color: $content_background;
+}
+
+header {
+    padding: 50px;
+    display: flex;
+
+    @media $phablet_mq {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+.Logo {
+    flex: 1;
+
+    &__link {
+        text-decoration: none;
+        color: $text_color;
+    }
+}
+
+nav {
+    flex: 1;
+    text-align: right;
+}

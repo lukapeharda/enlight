@@ -1,0 +1,19 @@
+/* Colors */
+$blue: #1eadff;
+$red: #fa3939;
+$green: #5f9f34;
+$yellow: #ffd633;
+
+$container_background: #cccccc;
+$content_background: #ffffff;
+
+$text_color: #000000;
+
+/* Responsive */
+$tablet: 950px;
+$phablet: 600px;
+$mobile: 440px;
+
+$tablet_mq: all and (max-width: $tablet);
+$phablet_mq: all and (max-width: $phablet);
+$mobile_mq: all and (max-width: $mobile);
