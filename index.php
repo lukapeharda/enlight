@@ -13,21 +13,19 @@
 
 <body <?php body_class(); ?>>
 
-    <header>
+    <header class="Header">
         <h1 class="Logo">
             <a href="#" class="Logo__link">
-                <img class="Logo_img" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/lp-logo.png">
+                <img class="Logo__image" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/lp-logo.png">
                 <span class="Logo__text">lukapeharda.com</span>
             </a>
         </h1>
         <nav>
-            Navigation goes here
+            <?php wp_nav_menu(array('menu' => 'primary', 'depth' => 1, 'container' => false, 'menu_class' => 'MainMenu')); ?>
         </nav>
     </header>
 
-    <main>
-        <div id="app">
-        </div>
+    <main id="app">
     </main>
 
     <footer>

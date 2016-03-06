@@ -1,22 +1,27 @@
 @import "../css/reset";
 
 @import "./variables.scss";
+@import "./components/logo.scss";
+@import "./components/menu.scss";
+@import "./components/post.scss";
+@import "./components/page.scss";
 
 body {
-    background-color: $container_background;
-    padding: 50px;
     font-family: Roboto, sans-serif;
     color: $text_color;
     font-weight: 300;
 }
 
-header, main, footer {
+header.Header, main, footer {
     background-color: $content_background;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
-header {
-    padding: 50px;
+.Header {
     display: flex;
+    align-items: center;
+    padding-top: 80px;
 
     @media $phablet_mq {
         flex-direction: column;
@@ -24,16 +29,16 @@ header {
     }
 }
 
-.Logo {
-    flex: 1;
-
-    &__link {
-        text-decoration: none;
-        color: $text_color;
-    }
-}
-
 nav {
     flex: 1;
     text-align: right;
+}
+
+p + blockquote, p + p, blockquote + p {
+    margin-top: 25px;
+}
+
+blockquote {
+    padding-left: 25px;
+    border-left: 2px solid $text_color;
 }

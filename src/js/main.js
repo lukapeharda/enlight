@@ -1,23 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router, Route, IndexRoute, browserHistory } from 'react-router';
-import App from './components/App.jsx';
+
+import page from 'page';
+
+// import App from './components/App.jsx';
 import About from './components/About.jsx';
 import Posts from './components/Posts.jsx';
+import Page from './components/Page.jsx';
+import SinglePost from './components/SinglePost.jsx';
 
-ReactDOM.render((
-    <Router history={browserHistory}>
-        <Route path="/" component={App}>
-            <Route path="/about" component={About} />
-            <IndexRoute component={Posts} />
-        </Route>
-    </Router>
-), document.getElementById('app'));
+page('/', function(context, next) {
+    ReactDOM.render(<Posts />, document.getElementById('app'));
+});
+page('/post/:slug', function(context, next) {
+    ReactDOM.render(<SinglePost slug={ context.params.slug } />, document.getElementById('app'));
+});
+page('/page/:slug', function(context, next) {
+    ReactDOM.render(<Page slug={ context.params.slug } />, document.getElementById('app'));
+});
 
-var links = document.getElementsByTagName('a');
-for (var a = 0; a < links.length; a += 1) {
-    links[a].addEventListener('click', function(a, b, c) {
-        browserHistory.push('/about');
-        return false;
-    });
-}
+page.start();

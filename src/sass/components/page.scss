@@ -1,0 +1,42 @@
+.Page {
+
+    margin-top: 80px;
+
+    & header {
+        background-color: $red;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 230px;
+        margin-bottom: 50px;
+    }
+
+    &--blue blockquote {
+        border-color: $blue;
+    }
+
+    &--blue header {
+        background-color: $blue;
+    }
+
+    &__content {
+        font-size: 20px;
+        line-height: 30px;
+    }
+
+    &--blue &__content a {
+        color: $blue;
+        border-bottom: 1px solid transparent;
+        text-decoration: none;
+    }
+    &--blue &__content a:hover {
+        background-color: rgba(30,173,255, 0.1);
+        border-bottom: 1px solid $blue;
+    }
+
+    &__title {
+        text-align: center;
+        font-size: 50px;
+        color: #ffffff;
+    }
+}

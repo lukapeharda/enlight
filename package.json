@@ -5,7 +5,8 @@
   "main": "index.php",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack"
+    "build": "webpack",
+    "prod": "webpack --optimize-minimize"
   },
   "author": "Luka Peharda",
   "license": "MIT",

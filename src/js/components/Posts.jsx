@@ -16,7 +16,7 @@ module.exports = React.createClass({
                 posts: data
             });
         }, function (error) {
-            console.log(error);
+            console.error(error);
         });
     },
 
@@ -25,10 +25,10 @@ module.exports = React.createClass({
             return <div>Loading posts...</div>;
         } else {
             var posts = this.state.posts.map(function(post) {
-                return <Post key={post.id} title={post.title.rendered} content={post.content.rendered} />;
+                return <Post key={ post.id } post={ post } />;
             });
             return (
-                <div>
+                <div className="Posts">
                     {posts}
                 </div>);
         }

@@ -1,0 +1,64 @@
+.Post {
+    background-color: $red;
+    display: flex;
+    min-height: 300px;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top: 80px;
+
+    &--link {
+        background-color: $yellow;
+    }
+
+    &--link &__meta__format {
+        color: $yellow;
+    }
+
+    &__title {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        min-height: 230px;
+        font-size: 50px;
+        color: #ffffff;
+    }
+
+    &__title__link {
+        text-decoration: none;
+        border-bottom: 2px solid transparent;
+        color: #ffffff;
+
+        &:hover {
+            border-bottom: 2px solid #ffffff;
+            background-color: rgba(255,255,255, 0.3);
+        }
+
+        @media $phablet_mq {
+            font-size: 30px;
+        }
+    }
+
+    &__meta__format {
+        display: inline-block;
+        text-align: center;
+        vertical-align: middle;
+        background-color: #ffffff;
+        color: $red;
+        font-size: 30px;
+        padding: 25px;
+    }
+
+    &__meta__author, &__meta__date {
+        color: #ffffff;
+        margin-left: 50px;
+
+        @media $mobile_mq {
+            margin-left: 25px;
+        }
+    }
+
+    &__meta__author::before, &__meta__date::before {
+        margin-right: 10px;
+    }
+}
