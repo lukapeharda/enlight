@@ -2,13 +2,12 @@
 
     margin-top: 80px;
 
-    & header {
+    &__header {
         background-color: $red;
         display: flex;
         justify-content: center;
         align-items: center;
         min-height: 230px;
-        margin-bottom: 50px;
     }
 
     &--blue blockquote {
@@ -22,6 +21,7 @@
     &__content {
         font-size: 20px;
         line-height: 30px;
+        margin-top: 50px;
     }
 
     &--blue &__content a {

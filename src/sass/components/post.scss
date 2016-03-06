@@ -1,16 +1,25 @@
 .Post {
-    background-color: $red;
-    display: flex;
-    min-height: 300px;
-    flex-direction: column;
-    justify-content: space-between;
     margin-top: 80px;
 
-    &--link {
+    &__header {
+        background-color: $red;
+        display: flex;
+        min-height: 300px;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    &__content {
+        font-size: 20px;
+        line-height: 30px;
+        margin-top: 50px;
+    }
+
+    &--link &__header {
         background-color: $yellow;
     }
 
-    &--link &__meta__format {
+    &--link &__header &__meta__format {
         color: $yellow;
     }
 

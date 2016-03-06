@@ -73,18 +73,25 @@ table {
     color: #fa3939;
 }
 .Post {
+    margin-top: 80px;
+}
+.Post--link .Post__header {
+    background-color: #ffd633;
+}
+.Post--link .Post__header .Post__meta__format {
+    color: #ffd633;
+}
+.Post__header {
     background-color: #fa3939;
     display: flex;
     min-height: 300px;
     flex-direction: column;
     justify-content: space-between;
-    margin-top: 80px;
 }
-.Post--link .Post__meta__format {
-    color: #ffd633;
-}
-.Post--link {
-    background-color: #ffd633;
+.Post__content {
+    font-size: 20px;
+    line-height: 30px;
+    margin-top: 50px;
 }
 .Post__title {
     display: flex;
@@ -142,13 +149,12 @@ table {
     background-color: rgba(30,173,255, 0.1);
     border-bottom: 1px solid #1eadff;
 }
-.Page header {
+.Page__header {
     background-color: #fa3939;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 230px;
-    margin-bottom: 50px;
 }
 .Page--blue blockquote {
     border-color: #1eadff;
@@ -159,6 +165,7 @@ table {
 .Page__content {
     font-size: 20px;
     line-height: 30px;
+    margin-top: 50px;
 }
 .Page__title {
     text-align: center;

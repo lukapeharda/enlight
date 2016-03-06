@@ -20852,16 +20852,20 @@
 	            'article',
 	            { className: articleClass, key: this.props.id },
 	            _react2.default.createElement(
-	                'h1',
-	                { className: 'Post__title' },
-	                _react2.default.createElement('a', { className: 'Post__title__link', href: this.getPermalink(this.state.post), dangerouslySetInnerHTML: { __html: this.state.post.title.rendered } })
-	            ),
-	            _react2.default.createElement(
-	                'div',
-	                { className: 'Post__meta' },
-	                _react2.default.createElement(_PostFormatIcon2.default, { format: this.getPostFormat(this.state.post) }),
-	                _react2.default.createElement('span', { className: 'lnr lnr-user Post__meta__author', dangerouslySetInnerHTML: this.getAuthor(this.state.post) }),
-	                _react2.default.createElement('span', { className: 'lnr lnr-calendar-full Post__meta__date', dangerouslySetInnerHTML: this.getDate(this.state.post) })
+	                'header',
+	                { className: 'Post__header' },
+	                _react2.default.createElement(
+	                    'h1',
+	                    { className: 'Post__title' },
+	                    _react2.default.createElement('a', { className: 'Post__title__link', href: this.getPermalink(this.state.post), dangerouslySetInnerHTML: { __html: this.state.post.title.rendered } })
+	                ),
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: 'Post__meta' },
+	                    _react2.default.createElement(_PostFormatIcon2.default, { format: this.getPostFormat(this.state.post) }),
+	                    _react2.default.createElement('span', { className: 'lnr lnr-user Post__meta__author', dangerouslySetInnerHTML: this.getAuthor(this.state.post) }),
+	                    _react2.default.createElement('span', { className: 'lnr lnr-calendar-full Post__meta__date', dangerouslySetInnerHTML: this.getDate(this.state.post) })
+	                )
 	            )
 	        );
 	    }
