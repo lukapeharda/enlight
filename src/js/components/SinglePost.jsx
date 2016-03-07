@@ -27,7 +27,7 @@ module.exports = React.createClass({
         if (this.state.post.length === 0) {
             return <div>Loading post...</div>;
         } else {
-            var articleClass = "Post Post--" + this.getPostFormat(this.state.post);
+            var articleClass = "Post Post--" + this.getPostColor(this.state.post);
 
             return (
                 <article className={ articleClass } key={this.props.id}>

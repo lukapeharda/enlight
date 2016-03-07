@@ -26,7 +26,7 @@ module.exports = React.createClass({
         if (this.state.page.length === 0) {
             return <div>Loading page...</div>;
         } else {
-            var pageClass = "Page Page--blue";
+            var pageClass = "Page Page--" + this.getPostColor(this.state.page);
             return (
 
                 <article className={ pageClass } key={this.props.id}>

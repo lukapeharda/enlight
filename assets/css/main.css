@@ -57,29 +57,87 @@ table {
     display: flex;
     justify-content: flex-end;
 }
-.MainMenu a {
+.MainMenu__item+.MainMenu__item {
+    padding-left: 10px;
+}
+.MainMenu__item.MainMenu__item--green a {
+    border-bottom: 2px solid #5f9f34;
+}
+.MainMenu__item.MainMenu__item--green a:hover {
+    color: #5f9f34;
+}
+.MainMenu__item a {
     font-size: 20px;
     color: #000000;
     text-decoration: none;
     padding: 5px 10px;
-}
-.MainMenu a:hover {
-    border-bottom: 2px solid #000000;
-    background-color: rgba(0,0,0, 0.05);
-}
-.MainMenu a.red:hover {
     border-bottom: 2px solid #fa3939;
-    background-color: rgba(250,57,57, 0.05);
+}
+.MainMenu__item a:hover {
     color: #fa3939;
 }
 .Post {
     margin-top: 80px;
 }
-.Post--link .Post__header {
+/*
+     * Yellow
+     */
+.Post--yellow .Post__content a {
+    border-bottom: 1px solid #ffd633;
+}
+.Post--yellow .Post__content a:hover {
+    color: #ffd633;
+}
+.Post--yellow .Post__header {
     background-color: #ffd633;
 }
-.Post--link .Post__header .Post__meta__format {
+.Post--yellow .Post__header .Post__meta__format {
     color: #ffd633;
+}
+/*
+     * Red
+     */
+.Post--red .Post__content a {
+    border-bottom: 1px solid #fa3939;
+}
+.Post--red .Post__content a:hover {
+    color: #fa3939;
+}
+.Post--red .Post__header {
+    background-color: #fa3939;
+}
+.Post--red .Post__header .Post__meta__format {
+    color: #fa3939;
+}
+/*
+     * Blue
+     */
+.Post--blue .Post__content a {
+    border-bottom: 1px solid #1eadff;
+}
+.Post--blue .Post__content a:hover {
+    color: #1eadff;
+}
+.Post--blue .Post__header {
+    background-color: #1eadff;
+}
+.Post--blue .Post__header .Post__meta__format {
+    color: #1eadff;
+}
+/*
+     * Green
+     */
+.Post--green .Post__content a {
+    border-bottom: 1px solid #5f9f34;
+}
+.Post--green .Post__content a:hover {
+    color: #5f9f34;
+}
+.Post--green .Post__header {
+    background-color: #5f9f34;
+}
+.Post--green .Post__header .Post__meta__format {
+    color: #5f9f34;
 }
 .Post__header {
     background-color: #fa3939;
@@ -92,6 +150,19 @@ table {
     font-size: 20px;
     line-height: 30px;
     margin-top: 50px;
+}
+.Post__content a {
+    color: #000000;
+    text-decoration: none;
+}
+.Post__content {
+    font-size: 20px;
+    line-height: 30px;
+    margin-top: 50px;
+}
+.Post__content a {
+    color: #000000;
+    text-decoration: none;
 }
 .Post__title {
     display: flex;
@@ -140,14 +211,41 @@ table {
 .Page {
     margin-top: 80px;
 }
+/*
+     *  Blue
+     */
 .Page--blue .Page__content a {
-    color: #1eadff;
-    border-bottom: 1px solid transparent;
-    text-decoration: none;
+    border-bottom: 1px solid #1eadff;
 }
 .Page--blue .Page__content a:hover {
-    background-color: rgba(30,173,255, 0.1);
-    border-bottom: 1px solid #1eadff;
+    color: #1eadff;
+}
+/*
+     *  Green
+     */
+.Page--green .Page__content a {
+    border-bottom: 1px solid #5f9f34;
+}
+.Page--green .Page__content a:hover {
+    color: #5f9f34;
+}
+/*
+     *  Yellow
+     */
+.Page--yellow .Page__content a {
+    border-bottom: 1px solid #ffd633;
+}
+.Page--yellow .Page__content a:hover {
+    color: #ffd633;
+}
+/*
+     *  Red
+     */
+.Page--red .Page__content a {
+    border-bottom: 1px solid #fa3939;
+}
+.Page--red .Page__content a:hover {
+    color: #fa3939;
 }
 .Page__header {
     background-color: #fa3939;
@@ -156,21 +254,43 @@ table {
     align-items: center;
     min-height: 230px;
 }
-.Page--blue blockquote {
-    border-color: #1eadff;
-}
-.Page--blue header {
-    background-color: #1eadff;
+.Page__title {
+    text-align: center;
+    font-size: 50px;
+    color: #ffffff;
 }
 .Page__content {
     font-size: 20px;
     line-height: 30px;
     margin-top: 50px;
 }
-.Page__title {
-    text-align: center;
-    font-size: 50px;
-    color: #ffffff;
+.Page__content a {
+    color: #000000;
+    text-decoration: none;
+}
+.Page--blue blockquote {
+    border-color: #1eadff;
+}
+.Page--blue header {
+    background-color: #1eadff;
+}
+.Page--green blockquote {
+    border-color: #5f9f34;
+}
+.Page--green header {
+    background-color: #5f9f34;
+}
+.Page--yellow blockquote {
+    border-color: #ffd633;
+}
+.Page--yellow header {
+    background-color: #ffd633;
+}
+.Page--red blockquote {
+    border-color: #fa3939;
+}
+.Page--red header {
+    background-color: #fa3939;
 }
 
 body {
@@ -227,5 +347,29 @@ p + blockquote, p + p, blockquote + p {
 blockquote {
     padding-left: 25px;
     border-left: 2px solid #000000;
+}
+
+.example-enter {
+  opacity: 0.01;
+  -webkit-transform: translate3d(150px,0,0);
+          transform: translate3d(150px,0,0);
+}
+
+.example-enter.example-enter-active {
+  opacity: 1;
+  -webkit-transform: translate3d(0,0,0);
+          transform: translate3d(0,0,0);
+  -webkit-transition: all 500ms ease-in;
+  transition: all 500ms ease-in;
+}
+
+.example-leave {
+  opacity: 1;
+}
+
+.example-leave.example-leave-active {
+  opacity: 0.01;
+  -webkit-transition: opacity 300ms ease-in;
+  transition: opacity 300ms ease-in;
 }
 /*# sourceMappingURL=main.css.map */

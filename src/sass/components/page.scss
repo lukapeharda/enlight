@@ -10,12 +10,10 @@
         min-height: 230px;
     }
 
-    &--blue blockquote {
-        border-color: $blue;
-    }
-
-    &--blue header {
-        background-color: $blue;
+    &__title {
+        text-align: center;
+        font-size: 50px;
+        color: #ffffff;
     }
 
     &__content {
@@ -24,19 +22,71 @@
         margin-top: 50px;
     }
 
-    &--blue &__content a {
-        color: $blue;
-        border-bottom: 1px solid transparent;
+    &__content a {
+        color: $text_color;
         text-decoration: none;
     }
-    &--blue &__content a:hover {
-        background-color: rgba(30,173,255, 0.1);
+
+    /*
+     *  Blue
+     */
+    &--blue blockquote {
+        border-color: $blue;
+    }
+    &--blue header {
+        background-color: $blue;
+    }
+    &--blue &__content a {
         border-bottom: 1px solid $blue;
+        &:hover {
+            color: $blue;
+        }
     }
 
-    &__title {
-        text-align: center;
-        font-size: 50px;
-        color: #ffffff;
+    /*
+     *  Green
+     */
+    &--green blockquote {
+        border-color: $green;
+    }
+    &--green header {
+        background-color: $green;
+    }
+    &--green &__content a {
+        border-bottom: 1px solid $green;
+        &:hover {
+            color: $green;
+        }
+    }
+
+    /*
+     *  Yellow
+     */
+    &--yellow blockquote {
+        border-color: $yellow;
+    }
+    &--yellow header {
+        background-color: $yellow;
+    }
+    &--yellow &__content a {
+        border-bottom: 1px solid $yellow;
+        &:hover {
+            color: $yellow;
+        }
+    }
+
+    /*
+     *  Red
+     */
+    &--red blockquote {
+        border-color: $red;
+    }
+    &--red header {
+        background-color: $red;    }
+    &--red &__content a {
+        border-bottom: 1px solid $red;
+        &:hover {
+            color: $red;
+        }
     }
 }

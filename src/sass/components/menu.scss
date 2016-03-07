@@ -2,21 +2,27 @@
     display: flex;
     justify-content: flex-end;
 
-    & a {
+    &__item+&__item {
+        padding-left: 10px;
+    }
+
+    &__item a {
         font-size: 20px;
         color: $text_color;
         text-decoration: none;
         padding: 5px 10px;
+        border-bottom: 2px solid $red;
 
         &:hover {
-            border-bottom: 2px solid $text_color;
-            background-color: rgba(0,0,0, 0.05);
-        }
-
-        &.red:hover {
-            border-bottom: 2px solid $red;
-            background-color: rgba(250,57,57, 0.05);
             color: $red;
+        }
+    }
+
+    &__item&__item--green a {
+        border-bottom: 2px solid $green;
+
+        &:hover {
+            color: $green;
         }
     }
 }

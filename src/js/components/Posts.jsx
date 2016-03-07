@@ -30,7 +30,8 @@ module.exports = React.createClass({
             return (
                 <div className="Posts">
                     {posts}
-                </div>);
+                </div>
+            );
         }
     }
 });

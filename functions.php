@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * Setup theme.
+ *
+ * @return void
+ */
 function enlight_setup_theme()
 {
     // Nav menus
@@ -7,6 +12,11 @@ function enlight_setup_theme()
 }
 add_action('after_setup_theme', 'enlight_setup_theme');
 
+/**
+ * Enqueue styles and scripts.
+ *
+ * @return void
+ */
 function enlight_enqueue_assets()
 {
     // CSS files & fonts
@@ -20,6 +30,11 @@ function enlight_enqueue_assets()
 }
 add_action('wp_enqueue_scripts', 'enlight_enqueue_assets');
 
+/**
+ * Change page post type permalink structure. So we can easily route with JS.
+ *
+ * @return void
+ */
 function enlight_custom_permastructure()
 {
     global $wp_rewrite;
@@ -47,3 +62,18 @@ function enlight_post_format_rest_link($response, $post, $request)
     return $response;
 }
 add_filter('rest_prepare_post', 'enlight_post_format_rest_link', 10, 3);
+
+/**
+ * Return registered theme colors.
+ *
+ * @return array
+ */
+function enlight_get_colors()
+{
+    return apply_filters('enlight/registered_colors', array('red' => '#fa3939', 'yellow' => '#ffd633', 'blue' => '#1eadff', 'green' => '#5f9f34'));
+}
+
+require_once 'includes/custom_meta.php';
+
+require_once 'vendor/wp-menu-item-custom-fields/menu-item-custom-fields.php';
+require_once 'includes/custom_menu.php';

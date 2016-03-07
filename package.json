@@ -33,6 +33,7 @@
     "wordpress-rest-api": "~0.6.0",
     "react-dom": "~0.14.7",
     "react": "~0.14.7",
-    "page": "~1.6.4"
+    "page": "~1.6.4",
+    "react-addons-css-transition-group": "~0.14.7"
   }
 }

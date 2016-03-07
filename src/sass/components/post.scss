@@ -15,12 +15,20 @@
         margin-top: 50px;
     }
 
-    &--link &__header {
-        background-color: $yellow;
+    &__content a {
+        color: $text_color;
+        text-decoration: none;
     }
 
-    &--link &__header &__meta__format {
-        color: $yellow;
+    &__content {
+        font-size: 20px;
+        line-height: 30px;
+        margin-top: 50px;
+    }
+
+    &__content a {
+        color: $text_color;
+        text-decoration: none;
     }
 
     &__title {
@@ -69,5 +77,69 @@
 
     &__meta__author::before, &__meta__date::before {
         margin-right: 10px;
+    }
+
+    /*
+     * Yellow
+     */
+    &--yellow &__content a {
+        border-bottom: 1px solid $yellow;
+        &:hover {
+            color: $yellow;
+        }
+    }
+    &--yellow &__header {
+        background-color: $yellow;
+    }
+    &--yellow &__header &__meta__format {
+        color: $yellow;
+    }
+
+    /*
+     * Red
+     */
+    &--red &__content a {
+        border-bottom: 1px solid $red;
+        &:hover {
+            color: $red;
+        }
+    }
+    &--red &__header {
+        background-color: $red;
+    }
+    &--red &__header &__meta__format {
+        color: $red;
+    }
+
+    /*
+     * Blue
+     */
+    &--blue &__content a {
+        border-bottom: 1px solid $blue;
+        &:hover {
+            color: $blue;
+        }
+    }
+    &--blue &__header {
+        background-color: $blue;
+    }
+    &--blue &__header &__meta__format {
+        color: $blue;
+    }
+
+    /*
+     * Green
+     */
+    &--green &__content a {
+        border-bottom: 1px solid $green;
+        &:hover {
+            color: $green;
+        }
+    }
+    &--green &__header {
+        background-color: $green;
+    }
+    &--green &__header &__meta__format {
+        color: $green;
     }
 }
