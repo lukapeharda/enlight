@@ -25,8 +25,7 @@
         </nav>
     </header>
 
-    <main id="app">
-    </main>
+    <main id="app"></main>
 
     <footer class="Footer">
         <p class="Copyright">

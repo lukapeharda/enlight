@@ -36,6 +36,8 @@ table {
 /* Colors */
 
 /* Responsive */
+
+/* Misc */
 .Logo {
     flex: 1;
 }
@@ -322,6 +324,24 @@ table {
     background-color: #fa3939;
 }
 
+/**
+ * Sticky Footer
+ */
+html, body {
+    height: 100%;
+}
+main {
+    min-height: 100%;
+    margin-bottom: -100px;
+}
+main:after {
+  content: "";
+  display: block;
+}
+footer, main:after {
+    height: 100px;
+}
+
 body {
     font-family: Roboto, sans-serif;
     color: #000000;
@@ -363,6 +383,18 @@ header.Header, main, footer {
 
 .Footer {
     padding: 80px 0;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+        -ms-flex-pack: center;
+            justify-content: center;
 }
 
 nav {
@@ -380,29 +412,5 @@ p + blockquote, p + p, blockquote + p {
 blockquote {
     padding-left: 25px;
     border-left: 2px solid #000000;
-}
-
-.example-enter {
-  opacity: 0.01;
-  -webkit-transform: translate3d(150px,0,0);
-          transform: translate3d(150px,0,0);
-}
-
-.example-enter.example-enter-active {
-  opacity: 1;
-  -webkit-transform: translate3d(0,0,0);
-          transform: translate3d(0,0,0);
-  -webkit-transition: all 500ms ease-in;
-  transition: all 500ms ease-in;
-}
-
-.example-leave {
-  opacity: 1;
-}
-
-.example-leave.example-leave-active {
-  opacity: 0.01;
-  -webkit-transition: opacity 300ms ease-in;
-  transition: opacity 300ms ease-in;
 }
 /*# sourceMappingURL=main.css.map */
