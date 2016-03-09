@@ -28,7 +28,10 @@
     <main id="app">
     </main>
 
-    <footer>
+    <footer class="Footer">
+        <p class="Copyright">
+            &copy; <?php echo date('Y'); ?> Luka Peharda
+        </p>
     </footer>
 
     <?php wp_footer(); ?>

@@ -1,26 +1,16 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-
-// import App from './components/App.jsx';
-import About from './components/About.jsx';
-import Posts from './components/Posts.jsx';
-import Page from './components/Page.jsx';
-import SinglePost from './components/SinglePost.jsx';
+/*
+ * Controller
+ */
+import Controller from './components/Controller.jsx';
 
 /*
  * Router
  */
 import page from 'page';
 
-page('/', function(context, next) {
-    ReactDOM.render(<Posts />, document.getElementById('app'));
-});
-page('/post/:slug', function(context, next) {
-    ReactDOM.render(<SinglePost slug={ context.params.slug } />, document.getElementById('app'));
-});
-page('/page/:slug', function(context, next) {
-    ReactDOM.render(<Page slug={ context.params.slug } />, document.getElementById('app'));
-});
+page(/^\/$|^\/page\/([0-9])+/, Controller.init, Controller.posts);
+page('/post/:slug', Controller.init, Controller.post);
+page('/page/:slug', Controller.init, Controller.page);
 
 page.start();
 

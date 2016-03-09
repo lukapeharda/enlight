@@ -1,6 +1,7 @@
 import React from 'react';
 import { fetchPage } from '../actions.js';
 import Mixins from '../mixins.js';
+import LoadingIndicator from './LoadingIndicator.jsx';
 
 module.exports = React.createClass({
     mixins: [Mixins],
@@ -24,7 +25,9 @@ module.exports = React.createClass({
 
     render: function() {
         if (this.state.page.length === 0) {
-            return <div>Loading page...</div>;
+            return (
+                <LoadingIndicator />
+            );
         } else {
             var pageClass = "Page Page--" + this.getPostColor(this.state.page);
             return (

@@ -2,8 +2,8 @@ import WP from 'wordpress-rest-api';
 
 var wp = new WP({endpoint: enlight.endpoint});
 
-export function fetchPosts() {
-    return wp.posts().embed();
+export function fetchPosts(page) {
+    return wp.posts().page(page).embed();
 }
 
 export function fetchPage(slug) {
@@ -11,7 +11,5 @@ export function fetchPage(slug) {
 }
 
 export function fetchPost(slug) {
-    return wp.posts().filter({
-        post_name: slug
-    }).embed();
+    return wp.posts().name(slug).embed();
 }

@@ -1,0 +1,14 @@
+@mixin post-color($color) {
+    &--$color blockquote {
+        border-color: $($color);
+    }
+    &--$color header {
+        background-color: $($color);
+    }
+    &--$color &__content a {
+        border-bottom: 1px solid $($color);
+        &:hover {
+            color: $($color);
+        }
+    }
+}

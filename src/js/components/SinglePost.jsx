@@ -2,6 +2,7 @@ import React from 'react';
 import { fetchPost } from '../actions.js';
 import Mixins from '../mixins.js';
 import PostFormatIcon from './PostFormatIcon.jsx';
+import LoadingIndicator from './LoadingIndicator.jsx';
 
 module.exports = React.createClass({
     mixins: [Mixins],
@@ -25,7 +26,9 @@ module.exports = React.createClass({
 
     render: function() {
         if (this.state.post.length === 0) {
-            return <div>Loading post...</div>;
+            return (
+                <LoadingIndicator />
+            );
         } else {
             var articleClass = "Post Post--" + this.getPostColor(this.state.post);
 

@@ -40,8 +40,6 @@ table {
     flex: 1;
 }
 .Logo__image {
-    width: 80px;
-    height: auto;
     margin-right: 20px;
 }
 .Logo__link {
@@ -74,6 +72,36 @@ table {
     border-bottom: 2px solid #fa3939;
 }
 .MainMenu__item a:hover {
+    color: #fa3939;
+}
+.Pagination {
+    display: flex;
+    margin-top: 80px;
+}
+.Pagination a.Pagination__next:only-child {
+    margin-left: 50%;
+}
+.Pagination__prev, .Pagination__next {
+    text-align: center;
+    width: 50%;
+    font-size: 20px;
+    text-decoration: none;
+    color: #ffffff;
+    background-color: #fa3939;
+    padding: 15px 0;
+}
+.Pagination__prev:hover, .Pagination__next:hover {
+    opacity: 0.7;
+}
+.LoadingIndicator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 300px;
+    margin-top: 80px;
+}
+.LoadingIndicator p {
+    font-size: 20px;
     color: #fa3939;
 }
 .Post {
@@ -172,6 +200,7 @@ table {
     min-height: 230px;
     font-size: 50px;
     color: #ffffff;
+    padding: 0 25px;
 }
 .Post__title__link {
     text-decoration: none;
@@ -331,6 +360,10 @@ header.Header, main, footer {
         align-items: center;
     }
     }
+
+.Footer {
+    padding: 80px 0;
+}
 
 nav {
     -webkit-box-flex: 1;

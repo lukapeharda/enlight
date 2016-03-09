@@ -1,0 +1,12 @@
+.LoadingIndicator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 300px;
+    margin-top: 80px;
+
+    & p {
+        font-size: 20px;
+        color: $red;
+    }
+}
