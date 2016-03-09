@@ -19993,8 +19993,8 @@
 	    displayName: 'exports',
 
 	    render: function render() {
-	        var linkPrev = '/page/' + (parseInt(this.props.current) - 1);
-	        var linkNext = '/page/' + (parseInt(this.props.current) + 1);
+	        var linkPrev = parseInt(this.props.current) === 2 ? enlight.baseurl : enlight.baseurl + 'page/' + (parseInt(this.props.current) - 1);
+	        var linkNext = enlight.baseurl + 'page/' + (parseInt(this.props.current) + 1);
 	        return _react2.default.createElement(
 	            'nav',
 	            { className: 'Pagination' },

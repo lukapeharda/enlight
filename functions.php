@@ -26,7 +26,10 @@ function enlight_enqueue_assets()
 
     // Scripts
     wp_enqueue_script('enlight-main', get_template_directory_uri() . '/assets/js/main.js', array(), false, true);
-    wp_localize_script('enlight-main', 'enlight', array('endpoint' => home_url('wp-json')));
+    wp_localize_script('enlight-main', 'enlight', array(
+        'endpoint'  => home_url('wp-json'),
+        'baseurl'   => home_url('/')
+    ));
 }
 add_action('wp_enqueue_scripts', 'enlight_enqueue_assets');
 
@@ -73,7 +76,13 @@ function enlight_get_colors()
     return apply_filters('enlight/registered_colors', array('red' => '#fa3939', 'yellow' => '#ffd633', 'blue' => '#1eadff', 'green' => '#5f9f34'));
 }
 
+/**
+ * Custom meta fields
+ */
 require_once 'includes/custom_meta.php';
 
+/**
+ * Custom navigation menu fields
+ */
 require_once 'vendor/wp-menu-item-custom-fields/menu-item-custom-fields.php';
 require_once 'includes/custom_menu.php';

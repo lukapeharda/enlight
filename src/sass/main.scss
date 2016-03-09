@@ -8,24 +8,6 @@
 @import "./components/post.scss";
 @import "./components/page.scss";
 
-/**
- * Sticky Footer
- */
-html, body {
-    height: 100%;
-}
-main {
-    min-height: 100%;
-    margin-bottom: -$footer_height;
-}
-main:after {
-  content: "";
-  display: block;
-}
-footer, main:after {
-    height: $footer_height;
-}
-
 body {
     font-family: Roboto, sans-serif;
     color: $text_color;

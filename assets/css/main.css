@@ -99,7 +99,7 @@ table {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 300px;
+    height: 200px;
     margin-top: 80px;
 }
 .LoadingIndicator p {
@@ -322,24 +322,6 @@ table {
 }
 .Page--red header {
     background-color: #fa3939;
-}
-
-/**
- * Sticky Footer
- */
-html, body {
-    height: 100%;
-}
-main {
-    min-height: 100%;
-    margin-bottom: -100px;
-}
-main:after {
-  content: "";
-  display: block;
-}
-footer, main:after {
-    height: 100px;
 }
 
 body {

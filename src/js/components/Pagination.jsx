@@ -2,8 +2,8 @@ import React from 'react';
 
 module.exports = React.createClass({
     render: function() {
-        let linkPrev = '/page/' + (parseInt(this.props.current) - 1);
-        let linkNext = '/page/' + (parseInt(this.props.current) + 1);
+        let linkPrev = parseInt(this.props.current) === 2 ? enlight.baseurl : enlight.baseurl + 'page/' + (parseInt(this.props.current) - 1);
+        let linkNext = enlight.baseurl + 'page/' + (parseInt(this.props.current) + 1);
         return (
             <nav className="Pagination">
                 {
