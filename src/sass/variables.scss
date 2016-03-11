@@ -14,9 +14,9 @@ $tablet: 950px;
 $phablet: 600px;
 $mobile: 440px;
 
-$tablet_mq: all and (max-width: $tablet);
-$phablet_mq: all and (max-width: $phablet);
-$mobile_mq: all and (max-width: $mobile);
+$tablet_mq: "max-width: #{$tablet}";
+$phablet_mq: "max-width: #{$phablet}";
+$mobile_mq: "max-width: #{$mobile}";
 
 /* Misc */
 $footer_height: 100px;

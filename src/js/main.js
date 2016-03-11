@@ -15,21 +15,30 @@ page('/page/:slug', Controller.init, Controller.page);
 page.start();
 
 /*
- * Main menu
+ * Polyfills
  */
-import classie from './utils/classie.js';
+import './polyfills/classlist.js';
 
 [].slice.call(document.querySelectorAll('.MainMenu')).forEach(function(menu) {
     var menuItems = menu.querySelectorAll('.menu-item'),
         setCurrent = function(ev) {
             var item = ev.target.parentNode;
-            if (classie.hasClass(item, 'current-menu-item')) {
+            if (item.classList.contains('current-menu-item')) {
                 return false;
             }
-            classie.removeClass(menu.querySelector('.current-menu-item'), 'current-menu-item');
-            classie.addClass(item, 'current-menu-item');
+            menu.querySelector('.current-menu-item').classList.remove('current-menu-item');
+            item.classList.add('current-menu-item');
         };
     [].slice.call(menuItems).forEach(function(el) {
         el.addEventListener('click', setCurrent);
     });
 });
+
+var hamburgers = document.getElementsByClassName('hamburger');
+
+for (var a = 0; a < hamburgers.length; a++) {
+    hamburgers[a].addEventListener('click', function(event) {
+        event.currentTarget.classList.toggle('is-active');
+        document.getElementsByClassName('MainMenu')[0].classList.toggle('open');
+    });
+}

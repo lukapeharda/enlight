@@ -54,9 +54,7 @@
 
 	var _page2 = _interopRequireDefault(_page);
 
-	var _classie = __webpack_require__(213);
-
-	var _classie2 = _interopRequireDefault(_classie);
+	__webpack_require__(213);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -77,7 +75,7 @@
 	_page2.default.start();
 
 	/*
-	 * Main menu
+	 * Polyfills
 	 */
 
 
@@ -85,16 +83,25 @@
 	    var menuItems = menu.querySelectorAll('.menu-item'),
 	        setCurrent = function setCurrent(ev) {
 	        var item = ev.target.parentNode;
-	        if (_classie2.default.hasClass(item, 'current-menu-item')) {
+	        if (item.classList.contains('current-menu-item')) {
 	            return false;
 	        }
-	        _classie2.default.removeClass(menu.querySelector('.current-menu-item'), 'current-menu-item');
-	        _classie2.default.addClass(item, 'current-menu-item');
+	        menu.querySelector('.current-menu-item').classList.remove('current-menu-item');
+	        item.classList.add('current-menu-item');
 	    };
 	    [].slice.call(menuItems).forEach(function (el) {
 	        el.addEventListener('click', setCurrent);
 	    });
 	});
+
+	var hamburgers = document.getElementsByClassName('hamburger');
+
+	for (var a = 0; a < hamburgers.length; a++) {
+	    hamburgers[a].addEventListener('click', function (event) {
+	        event.currentTarget.classList.toggle('is-active');
+	        document.getElementsByClassName('MainMenu')[0].classList.toggle('open');
+	    });
+	}
 
 /***/ },
 /* 1 */
@@ -42202,45 +42209,219 @@
 
 	"use strict";
 
-	function classReg(className) {
-	    return new RegExp("(^|\\s+)" + className + "(\\s+|$)");
+	/*
+	 * classList.js: Cross-browser full element.classList implementation.
+	 * 1.1.20150312
+	 *
+	 * By Eli Grey, http://eligrey.com
+	 * License: Dedicated to the public domain.
+	 *   See https://github.com/eligrey/classList.js/blob/master/LICENSE.md
+	 */
+
+	/*global self, document, DOMException */
+
+	/*! @source http://purl.eligrey.com/github/classList.js/blob/master/classList.js */
+
+	if ("document" in self) {
+
+	    // Full polyfill for browsers with no classList support
+	    // Including IE < Edge missing SVGElement.classList
+	    if (!("classList" in document.createElement("_")) || document.createElementNS && !("classList" in document.createElementNS("http://www.w3.org/2000/svg", "g"))) {
+
+	        (function (view) {
+
+	            "use strict";
+
+	            if (!('Element' in view)) return;
+
+	            var classListProp = "classList",
+	                protoProp = "prototype",
+	                elemCtrProto = view.Element[protoProp],
+	                objCtr = Object,
+	                strTrim = String[protoProp].trim || function () {
+	                return this.replace(/^\s+|\s+$/g, "");
+	            },
+	                arrIndexOf = Array[protoProp].indexOf || function (item) {
+	                var i = 0,
+	                    len = this.length;
+	                for (; i < len; i++) {
+	                    if (i in this && this[i] === item) {
+	                        return i;
+	                    }
+	                }
+	                return -1;
+	            }
+	            // Vendors: please allow content code to instantiate DOMExceptions
+	            ,
+	                DOMEx = function DOMEx(type, message) {
+	                this.name = type;
+	                this.code = DOMException[type];
+	                this.message = message;
+	            },
+	                checkTokenAndGetIndex = function checkTokenAndGetIndex(classList, token) {
+	                if (token === "") {
+	                    throw new DOMEx("SYNTAX_ERR", "An invalid or illegal string was specified");
+	                }
+	                if (/\s/.test(token)) {
+	                    throw new DOMEx("INVALID_CHARACTER_ERR", "String contains an invalid character");
+	                }
+	                return arrIndexOf.call(classList, token);
+	            },
+	                ClassList = function ClassList(elem) {
+	                var trimmedClasses = strTrim.call(elem.getAttribute("class") || ""),
+	                    classes = trimmedClasses ? trimmedClasses.split(/\s+/) : [],
+	                    i = 0,
+	                    len = classes.length;
+	                for (; i < len; i++) {
+	                    this.push(classes[i]);
+	                }
+	                this._updateClassName = function () {
+	                    elem.setAttribute("class", this.toString());
+	                };
+	            },
+	                classListProto = ClassList[protoProp] = [],
+	                classListGetter = function classListGetter() {
+	                return new ClassList(this);
+	            };
+	            // Most DOMException implementations don't allow calling DOMException's toString()
+	            // on non-DOMExceptions. Error's toString() is sufficient here.
+	            DOMEx[protoProp] = Error[protoProp];
+	            classListProto.item = function (i) {
+	                return this[i] || null;
+	            };
+	            classListProto.contains = function (token) {
+	                token += "";
+	                return checkTokenAndGetIndex(this, token) !== -1;
+	            };
+	            classListProto.add = function () {
+	                var tokens = arguments,
+	                    i = 0,
+	                    l = tokens.length,
+	                    token,
+	                    updated = false;
+	                do {
+	                    token = tokens[i] + "";
+	                    if (checkTokenAndGetIndex(this, token) === -1) {
+	                        this.push(token);
+	                        updated = true;
+	                    }
+	                } while (++i < l);
+
+	                if (updated) {
+	                    this._updateClassName();
+	                }
+	            };
+	            classListProto.remove = function () {
+	                var tokens = arguments,
+	                    i = 0,
+	                    l = tokens.length,
+	                    token,
+	                    updated = false,
+	                    index;
+	                do {
+	                    token = tokens[i] + "";
+	                    index = checkTokenAndGetIndex(this, token);
+	                    while (index !== -1) {
+	                        this.splice(index, 1);
+	                        updated = true;
+	                        index = checkTokenAndGetIndex(this, token);
+	                    }
+	                } while (++i < l);
+
+	                if (updated) {
+	                    this._updateClassName();
+	                }
+	            };
+	            classListProto.toggle = function (token, force) {
+	                token += "";
+
+	                var result = this.contains(token),
+	                    method = result ? force !== true && "remove" : force !== false && "add";
+
+	                if (method) {
+	                    this[method](token);
+	                }
+
+	                if (force === true || force === false) {
+	                    return force;
+	                } else {
+	                    return !result;
+	                }
+	            };
+	            classListProto.toString = function () {
+	                return this.join(" ");
+	            };
+
+	            if (objCtr.defineProperty) {
+	                var classListPropDesc = {
+	                    get: classListGetter,
+	                    enumerable: true,
+	                    configurable: true
+	                };
+	                try {
+	                    objCtr.defineProperty(elemCtrProto, classListProp, classListPropDesc);
+	                } catch (ex) {
+	                    // IE 8 doesn't support enumerable:true
+	                    if (ex.number === -0x7FF5EC54) {
+	                        classListPropDesc.enumerable = false;
+	                        objCtr.defineProperty(elemCtrProto, classListProp, classListPropDesc);
+	                    }
+	                }
+	            } else if (objCtr[protoProp].__defineGetter__) {
+	                elemCtrProto.__defineGetter__(classListProp, classListGetter);
+	            }
+	        })(self);
+	    } else {
+	        // There is full or partial native classList support, so just check if we need
+	        // to normalize the add/remove and toggle APIs.
+
+	        (function () {
+	            "use strict";
+
+	            var testElement = document.createElement("_");
+
+	            testElement.classList.add("c1", "c2");
+
+	            // Polyfill for IE 10/11 and Firefox <26, where classList.add and
+	            // classList.remove exist but support only one argument at a time.
+	            if (!testElement.classList.contains("c2")) {
+	                var createMethod = function createMethod(method) {
+	                    var original = DOMTokenList.prototype[method];
+
+	                    DOMTokenList.prototype[method] = function (token) {
+	                        var i,
+	                            len = arguments.length;
+
+	                        for (i = 0; i < len; i++) {
+	                            token = arguments[i];
+	                            original.call(this, token);
+	                        }
+	                    };
+	                };
+	                createMethod('add');
+	                createMethod('remove');
+	            }
+
+	            testElement.classList.toggle("c3", false);
+
+	            // Polyfill for IE 10 and Firefox <24, where classList.toggle does not
+	            // support the second argument.
+	            if (testElement.classList.contains("c3")) {
+	                var _toggle = DOMTokenList.prototype.toggle;
+
+	                DOMTokenList.prototype.toggle = function (token, force) {
+	                    if (1 in arguments && !this.contains(token) === !force) {
+	                        return force;
+	                    } else {
+	                        return _toggle.call(this, token);
+	                    }
+	                };
+	            }
+
+	            testElement = null;
+	        })();
+	    }
 	}
-
-	var hasClass, addClass, removeClass;
-
-	if ('classList' in document.documentElement) {
-	    hasClass = function hasClass(elem, c) {
-	        return elem.classList.contains(c);
-	    };
-	    addClass = function addClass(elem, c) {
-	        elem.classList.add(c);
-	    };
-	    removeClass = function removeClass(elem, c) {
-	        elem.classList.remove(c);
-	    };
-	} else {
-	    hasClass = function hasClass(elem, c) {
-	        return classReg(c).test(elem.className);
-	    };
-	    addClass = function addClass(elem, c) {
-	        if (!hasClass(elem, c)) {
-	            elem.className = elem.className + ' ' + c;
-	        }
-	    };
-	    removeClass = function removeClass(elem, c) {
-	        elem.className = elem.className.replace(classReg(c), ' ');
-	    };
-	}
-
-	var classie = function classie() {
-	    return {
-	        hasClass: hasClass,
-	        addClass: addClass,
-	        removeClass: removeClass
-	    };
-	};
-
-	module.exports = new classie();
 
 /***/ }
 /******/ ]);

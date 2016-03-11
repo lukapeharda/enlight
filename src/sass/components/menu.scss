@@ -1,6 +1,41 @@
+@import '../vendor/hamburgers/hamburgers.scss';
+
+.hamburger {
+    display: none;
+
+    @media all and ($tablet_mq) {
+        display: inline-block;
+        position: fixed;
+        top: 0px;
+        right: 0px;
+        z-index: 100;
+        outline: none;
+
+    }
+}
+
 .MainMenu {
     display: flex;
     justify-content: flex-end;
+
+    @media all and ($tablet_mq) {
+        position: fixed;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        height: 100%;
+        background-color: $red;
+        transform: translateY(-100%);
+        transition: transform ease .25s;
+        z-index: 99;
+
+        &.open {
+            transform: translateY(0);
+        }
+    }
 
     &__item+&__item {
         padding-left: 10px;
@@ -18,7 +53,7 @@
         }
     }
 
-    &__item&__item--green a {
+    &__item--green a {
         border-bottom: 2px solid $green;
 
         &:hover {

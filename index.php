@@ -20,7 +20,12 @@
                 <span class="Logo__text">lukapeharda.com</span>
             </a>
         </h1>
-        <nav>
+        <nav class="Header__nav">
+            <button class="hamburger hamburger--3dx" type="button">
+                <span class="hamburger-box">
+                    <span class="hamburger-inner"></span>
+                </span>
+            </button>
             <?php wp_nav_menu(array('menu' => 'primary', 'depth' => 1, 'container' => false, 'menu_class' => 'MainMenu')); ?>
         </nav>
     </header>

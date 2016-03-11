@@ -52,7 +52,7 @@
             background-color: rgba(255,255,255, 0.3);
         }
 
-        @media $phablet_mq {
+        @media all and ($phablet_mq) {
             font-size: 30px;
         }
     }
@@ -71,7 +71,7 @@
         color: #ffffff;
         margin-left: 50px;
 
-        @media $mobile_mq {
+        @media all and ($mobile_mq) {
             margin-left: 25px;
         }
     }

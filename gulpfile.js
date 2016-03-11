@@ -1,6 +1,7 @@
 var gulp = require('gulp'),
+    sass = require('gulp-sass'),
     rename = require('gulp-rename'),
-    postcss = require('gulp-postcss'),
+    // postcss = require('gulp-postcss'),
     cssnano = require('gulp-cssnano'),
     livereload = require('gulp-livereload'),
     sourcemaps = require('gulp-sourcemaps');
@@ -11,7 +12,8 @@ gulp.task('css', function() {
     return gulp
         .src('./src/sass/main.scss')
         .pipe(sourcemaps.init())
-        .pipe(postcss([require('autoprefixer')({}),require('precss')({})]))
+        // .pipe(postcss([require('postcss-simple-vars'),require('autoprefixer'),require('precss')]))
+        .pipe(sass().on('error', sass.logError))
         // .pipe(cssnano())
         .pipe(rename('main.css'))
         .pipe(sourcemaps.write('.'))

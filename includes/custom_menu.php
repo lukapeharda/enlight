@@ -43,10 +43,10 @@ add_action('wp_update_nav_menu_item', 'enlight_save_visual_preferences_menu_fiel
 function enlight_nav_menu_css_class($classes, $item, $args)
 {
     if ($args->menu === 'primary') {
-        $highlightColor = get_post_meta($item->ID, 'enlight_highlight_color', true);
+        $classes[] = 'MainMenu__item';
 
+        $highlightColor = get_post_meta($item->ID, 'enlight_highlight_color', true);
         if (! empty($highlightColor)) {
-            $classes[] = 'MainMenu__item';
             $classes[] = 'MainMenu__item--' . $highlightColor;
         }
     }
