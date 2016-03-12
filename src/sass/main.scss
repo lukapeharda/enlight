@@ -1,12 +1,12 @@
 @import "../css/reset";
 
 @import "./variables.scss";
+@import "./mixins.scss";
 @import "./components/logo.scss";
 @import "./components/menu.scss";
 @import "./components/pagination.scss";
 @import "./components/loading.scss";
-@import "./components/post.scss";
-@import "./components/page.scss";
+@import "./components/article.scss";
 
 body {
     font-family: Roboto, sans-serif;
@@ -40,13 +40,4 @@ header.Header, main, footer {
 nav {
     flex: 1;
     text-align: right;
-}
-
-p + blockquote, p + p, blockquote + p {
-    margin-top: 25px;
-}
-
-blockquote {
-    padding-left: 25px;
-    border-left: 2px solid $text_color;
 }

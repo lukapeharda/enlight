@@ -1,10 +1,10 @@
 import React from 'react';
 import { fetchPage } from '../actions.js';
-import Mixins from '../mixins.js';
+import ArticleMixin from '../mixins/article.js';
 import LoadingIndicator from './LoadingIndicator.jsx';
 
 module.exports = React.createClass({
-    mixins: [Mixins],
+    mixins: [ArticleMixin],
 
     getInitialState: function() {
         return {
@@ -29,14 +29,14 @@ module.exports = React.createClass({
                 <LoadingIndicator />
             );
         } else {
-            var pageClass = "Page Page--" + this.getPostColor(this.state.page);
+            var articleClass = "Article Article--" + this.getPostColor(this.state.page);
             return (
 
-                <article className={ pageClass } key={this.props.id}>
-                    <header className="Page__header">
-                        <h1 className="Page__title" dangerouslySetInnerHTML={ this.getTitle(this.state.page) } />
+                <article className={ articleClass } key={this.props.id}>
+                    <header className="Article__header">
+                        <h1 className="Article__title" dangerouslySetInnerHTML={ this.getTitle(this.state.page) } />
                     </header>
-                    <div className="Page__content" dangerouslySetInnerHTML={ this.getContent(this.state.page) } />
+                    <div className="Article__content" dangerouslySetInnerHTML={ this.getContent(this.state.page) } />
                 </article>
             );
         }

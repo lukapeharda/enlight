@@ -26,7 +26,12 @@ import './polyfills/classlist.js';
             if (item.classList.contains('current-menu-item')) {
                 return false;
             }
-            menu.querySelector('.current-menu-item').classList.remove('current-menu-item');
+
+            var current = menu.querySelector('.current-menu-item');
+            if (current) {
+                current.classList.remove('current-menu-item');
+            }
+
             item.classList.add('current-menu-item');
         },
         closeMenu = function(ev) {
@@ -45,12 +50,3 @@ import './polyfills/classlist.js';
         document.getElementsByClassName('MainMenu')[0].classList.toggle('open');
     });
 });
-
-// var hamburgers = document.getElementsByClassName('hamburger');
-
-// for (var a = 0; a < hamburgers.length; a++) {
-//     hamburgers[a].addEventListener('click', function(event) {
-//         event.currentTarget.classList.toggle('is-active');
-//         document.getElementsByClassName('MainMenu')[0].classList.toggle('open');
-//     });
-// }

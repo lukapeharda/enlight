@@ -1,0 +1,118 @@
+.Article {
+    margin-top: 80px;
+
+    &__header {
+        background-color: $red;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    &__title {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        min-height: 230px;
+        font-size: 50px;
+        color: #ffffff;
+        padding: 0 25px;
+    }
+
+    &__title__link {
+        text-decoration: none;
+        border-bottom: 2px solid transparent;
+        color: #ffffff;
+
+        &:hover {
+            border-bottom: 2px solid #ffffff;
+            background-color: rgba(255,255,255, 0.3);
+        }
+
+        @media all and ($phablet_mq) {
+            font-size: 30px;
+        }
+    }
+
+    &__meta__format {
+        display: inline-block;
+        text-align: center;
+        vertical-align: middle;
+        background-color: #ffffff;
+        color: $red;
+        font-size: 30px;
+        padding: 25px;
+    }
+
+    &__meta__author, &__meta__date {
+        color: #ffffff;
+        margin-left: 50px;
+
+        @media all and ($mobile_mq) {
+            margin-left: 25px;
+        }
+    }
+
+    &__meta__author::before, &__meta__date::before {
+        margin-right: 10px;
+    }
+
+    &__content {
+        font-size: 20px;
+        line-height: 30px;
+        margin-top: 50px;
+
+        a {
+            color: $text_color;
+            text-decoration: none;
+        }
+
+        p, blockquote, h1, h2, h3, h4, h5, h6, ul, ol, hr {
+            margin-bottom: 25px;
+        }
+
+        blockquote {
+            padding-left: 25px;
+            border-left: 2px solid $text_color;
+        }
+
+        ul, ol {
+            list-style: initial;
+            list-style-position: inside;
+        }
+
+        hr {
+            border-bottom: 0;
+            border-style: solid;
+        }
+
+        h1 {
+            font-size: 40px;
+        }
+
+        h2 {
+            font-size: 35px;
+        }
+
+        h3 {
+            font-size: 30px;
+        }
+
+        h4 {
+            font-size: 25px;
+        }
+
+        h5 {
+            font-size: 20px;
+        }
+
+        h6 {
+            font-size: 15px;
+        }
+    }
+
+    @include article-color('yellow', $yellow);
+    @include article-color('red', $red);
+    @include article-color('blue', $blue);
+    @include article-color('green', $green);
+}

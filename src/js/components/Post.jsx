@@ -1,9 +1,9 @@
 import React from 'react';
 import PostFormatIcon from './PostFormatIcon.jsx';
-import Mixins from '../mixins.js';
+import ArticleMixin from '../mixins/article.js';
 
 module.exports = React.createClass({
-    mixins: [Mixins],
+    mixins: [ArticleMixin],
 
     getInitialState: function() {
         return {
@@ -12,16 +12,18 @@ module.exports = React.createClass({
     },
 
     render: function() {
-        var articleClass = "Post Post--" + this.getPostColor(this.state.post);
+        var articleClass = "Article Article--" + this.getPostColor(this.state.post);
 
         return (
             <article className={ articleClass } key={this.props.id}>
-                <header className="Post__header">
-                    <h1 className="Post__title"><a className="Post__title__link" href={ this.getPermalink(this.state.post) } dangerouslySetInnerHTML={{ __html: this.state.post.title.rendered }} /></h1>
-                    <div className="Post__meta">
+                <header className="Article__header">
+                    <h1 className="Article__title">
+                        <a className="Article__title__link" href={ this.getPermalink(this.state.post) } dangerouslySetInnerHTML={{ __html: this.state.post.title.rendered }} />
+                    </h1>
+                    <div className="Article__meta">
                         <PostFormatIcon format={ this.getPostFormat(this.state.post) } />
-                        <span className="lnr lnr-user Post__meta__author" dangerouslySetInnerHTML={ this.getAuthor(this.state.post) } />
-                        <span className="lnr lnr-calendar-full Post__meta__date" dangerouslySetInnerHTML={ this.getDate(this.state.post) } />
+                        <span className="lnr lnr-user Article__meta__author" dangerouslySetInnerHTML={ this.getAuthor(this.state.post) } />
+                        <span className="lnr lnr-calendar-full Article__meta__date" dangerouslySetInnerHTML={ this.getDate(this.state.post) } />
                     </div>
                 </header>
             </article>

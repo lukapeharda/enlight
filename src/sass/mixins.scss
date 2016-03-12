@@ -1,14 +1,26 @@
-@mixin post-color($color) {
-    &--$color blockquote {
-        border-color: $($color);
-    }
-    &--$color header {
-        background-color: $($color);
-    }
-    &--$color &__content a {
-        border-bottom: 1px solid $($color);
-        &:hover {
-            color: $($color);
+@mixin article-color($name, $color) {
+    &--#{$name} &__content {
+        a {
+            border-bottom: 1px solid $color;
+            &:hover {
+                color: $color;
+            }
         }
+        blockquote {
+            border-color: $color;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            /*border-bottom: 1px solid $color;*/
+            color: $color;
+        }
+        hr {
+            border-color: $color;
+        }
+    }
+    &--#{$name} &__header {
+        background-color: $color;
+    }
+    &--#{$name} &__header &__meta__format {
+        color: $color;
     }
 }

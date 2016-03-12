@@ -86,7 +86,12 @@
 	        if (item.classList.contains('current-menu-item')) {
 	            return false;
 	        }
-	        menu.querySelector('.current-menu-item').classList.remove('current-menu-item');
+
+	        var current = menu.querySelector('.current-menu-item');
+	        if (current) {
+	            current.classList.remove('current-menu-item');
+	        }
+
 	        item.classList.add('current-menu-item');
 	    },
 	        closeMenu = function closeMenu(ev) {
@@ -105,15 +110,6 @@
 	        document.getElementsByClassName('MainMenu')[0].classList.toggle('open');
 	    });
 	});
-
-	// var hamburgers = document.getElementsByClassName('hamburger');
-
-	// for (var a = 0; a < hamburgers.length; a++) {
-	//     hamburgers[a].addEventListener('click', function(event) {
-	//         event.currentTarget.classList.toggle('is-active');
-	//         document.getElementsByClassName('MainMenu')[0].classList.toggle('open');
-	//     });
-	// }
 
 /***/ },
 /* 1 */
@@ -19860,16 +19856,16 @@
 
 	var _PostFormatIcon2 = _interopRequireDefault(_PostFormatIcon);
 
-	var _mixins = __webpack_require__(163);
+	var _article = __webpack_require__(163);
 
-	var _mixins2 = _interopRequireDefault(_mixins);
+	var _article2 = _interopRequireDefault(_article);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	module.exports = _react2.default.createClass({
 	    displayName: 'exports',
 
-	    mixins: [_mixins2.default],
+	    mixins: [_article2.default],
 
 	    getInitialState: function getInitialState() {
 	        return {
@@ -19878,25 +19874,25 @@
 	    },
 
 	    render: function render() {
-	        var articleClass = "Post Post--" + this.getPostColor(this.state.post);
+	        var articleClass = "Article Article--" + this.getPostColor(this.state.post);
 
 	        return _react2.default.createElement(
 	            'article',
 	            { className: articleClass, key: this.props.id },
 	            _react2.default.createElement(
 	                'header',
-	                { className: 'Post__header' },
+	                { className: 'Article__header' },
 	                _react2.default.createElement(
 	                    'h1',
-	                    { className: 'Post__title' },
-	                    _react2.default.createElement('a', { className: 'Post__title__link', href: this.getPermalink(this.state.post), dangerouslySetInnerHTML: { __html: this.state.post.title.rendered } })
+	                    { className: 'Article__title' },
+	                    _react2.default.createElement('a', { className: 'Article__title__link', href: this.getPermalink(this.state.post), dangerouslySetInnerHTML: { __html: this.state.post.title.rendered } })
 	                ),
 	                _react2.default.createElement(
 	                    'div',
-	                    { className: 'Post__meta' },
+	                    { className: 'Article__meta' },
 	                    _react2.default.createElement(_PostFormatIcon2.default, { format: this.getPostFormat(this.state.post) }),
-	                    _react2.default.createElement('span', { className: 'lnr lnr-user Post__meta__author', dangerouslySetInnerHTML: this.getAuthor(this.state.post) }),
-	                    _react2.default.createElement('span', { className: 'lnr lnr-calendar-full Post__meta__date', dangerouslySetInnerHTML: this.getDate(this.state.post) })
+	                    _react2.default.createElement('span', { className: 'lnr lnr-user Article__meta__author', dangerouslySetInnerHTML: this.getAuthor(this.state.post) }),
+	                    _react2.default.createElement('span', { className: 'lnr lnr-calendar-full Article__meta__date', dangerouslySetInnerHTML: this.getDate(this.state.post) })
 	                )
 	            )
 	        );
@@ -19920,9 +19916,9 @@
 
 	    render: function render() {
 	        if (this.props.format === 'link') {
-	            return _react2.default.createElement('span', { className: 'lnr lnr-link Post__meta__format' });
+	            return _react2.default.createElement('span', { className: 'lnr lnr-link Article__meta__format' });
 	        } else {
-	            return _react2.default.createElement('span', { className: 'lnr lnr-code Post__meta__format' });
+	            return _react2.default.createElement('span', { className: 'lnr lnr-code Article__meta__format' });
 	        }
 	    }
 	});
@@ -41058,9 +41054,9 @@
 
 	var _actions = __webpack_require__(166);
 
-	var _mixins = __webpack_require__(163);
+	var _article = __webpack_require__(163);
 
-	var _mixins2 = _interopRequireDefault(_mixins);
+	var _article2 = _interopRequireDefault(_article);
 
 	var _LoadingIndicator = __webpack_require__(164);
 
@@ -41071,7 +41067,7 @@
 	module.exports = _react2.default.createClass({
 	    displayName: 'exports',
 
-	    mixins: [_mixins2.default],
+	    mixins: [_article2.default],
 
 	    getInitialState: function getInitialState() {
 	        return {
@@ -41094,16 +41090,16 @@
 	        if (this.state.page.length === 0) {
 	            return _react2.default.createElement(_LoadingIndicator2.default, null);
 	        } else {
-	            var pageClass = "Page Page--" + this.getPostColor(this.state.page);
+	            var articleClass = "Article Article--" + this.getPostColor(this.state.page);
 	            return _react2.default.createElement(
 	                'article',
-	                { className: pageClass, key: this.props.id },
+	                { className: articleClass, key: this.props.id },
 	                _react2.default.createElement(
 	                    'header',
-	                    { className: 'Page__header' },
-	                    _react2.default.createElement('h1', { className: 'Page__title', dangerouslySetInnerHTML: this.getTitle(this.state.page) })
+	                    { className: 'Article__header' },
+	                    _react2.default.createElement('h1', { className: 'Article__title', dangerouslySetInnerHTML: this.getTitle(this.state.page) })
 	                ),
-	                _react2.default.createElement('div', { className: 'Page__content', dangerouslySetInnerHTML: this.getContent(this.state.page) })
+	                _react2.default.createElement('div', { className: 'Article__content', dangerouslySetInnerHTML: this.getContent(this.state.page) })
 	            );
 	        }
 	    }
@@ -41121,9 +41117,9 @@
 
 	var _actions = __webpack_require__(166);
 
-	var _mixins = __webpack_require__(163);
+	var _article = __webpack_require__(163);
 
-	var _mixins2 = _interopRequireDefault(_mixins);
+	var _article2 = _interopRequireDefault(_article);
 
 	var _PostFormatIcon = __webpack_require__(162);
 
@@ -41138,7 +41134,7 @@
 	module.exports = _react2.default.createClass({
 	    displayName: 'exports',
 
-	    mixins: [_mixins2.default],
+	    mixins: [_article2.default],
 
 	    getInitialState: function getInitialState() {
 	        return {
@@ -41161,24 +41157,24 @@
 	        if (this.state.post.length === 0) {
 	            return _react2.default.createElement(_LoadingIndicator2.default, null);
 	        } else {
-	            var articleClass = "Post Post--" + this.getPostColor(this.state.post);
+	            var articleClass = "Article Article--" + this.getPostColor(this.state.post);
 
 	            return _react2.default.createElement(
 	                'article',
 	                { className: articleClass, key: this.props.id },
 	                _react2.default.createElement(
 	                    'header',
-	                    { className: 'Post__header' },
-	                    _react2.default.createElement('h1', { className: 'Post__title', dangerouslySetInnerHTML: this.getTitle(this.state.post) }),
+	                    { className: 'Article__header' },
+	                    _react2.default.createElement('h1', { className: 'Article__title', dangerouslySetInnerHTML: this.getTitle(this.state.post) }),
 	                    _react2.default.createElement(
 	                        'div',
-	                        { className: 'Post__meta' },
+	                        { className: 'Article__meta' },
 	                        _react2.default.createElement(_PostFormatIcon2.default, { format: this.getPostFormat(this.state.post) }),
-	                        _react2.default.createElement('span', { className: 'lnr lnr-user Post__meta__author', dangerouslySetInnerHTML: this.getAuthor(this.state.post) }),
-	                        _react2.default.createElement('span', { className: 'lnr lnr-calendar-full Post__meta__date', dangerouslySetInnerHTML: this.getDate(this.state.post) })
+	                        _react2.default.createElement('span', { className: 'lnr lnr-user Article__meta__author', dangerouslySetInnerHTML: this.getAuthor(this.state.post) }),
+	                        _react2.default.createElement('span', { className: 'lnr lnr-calendar-full Article__meta__date', dangerouslySetInnerHTML: this.getDate(this.state.post) })
 	                    )
 	                ),
-	                _react2.default.createElement('div', { className: 'Post__content', dangerouslySetInnerHTML: this.getContent(this.state.post) })
+	                _react2.default.createElement('div', { className: 'Article__content', dangerouslySetInnerHTML: this.getContent(this.state.post) })
 	            );
 	        }
 	    }

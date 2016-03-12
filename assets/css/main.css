@@ -210,41 +210,14 @@ table {
     font-size: 20px;
     color: #fa3939; }
 
-.Post {
-  margin-top: 80px;
-  /*
-     * Yellow
-     */
-  /*
-     * Red
-     */
-  /*
-     * Blue
-     */
-  /*
-     * Green
-     */ }
-  .Post__header {
+.Article {
+  margin-top: 80px; }
+  .Article__header {
     background-color: #fa3939;
     display: flex;
-    min-height: 300px;
     flex-direction: column;
     justify-content: space-between; }
-  .Post__content {
-    font-size: 20px;
-    line-height: 30px;
-    margin-top: 50px; }
-  .Post__content a {
-    color: #000000;
-    text-decoration: none; }
-  .Post__content {
-    font-size: 20px;
-    line-height: 30px;
-    margin-top: 50px; }
-  .Post__content a {
-    color: #000000;
-    text-decoration: none; }
-  .Post__title {
+  .Article__title {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -253,17 +226,17 @@ table {
     font-size: 50px;
     color: #ffffff;
     padding: 0 25px; }
-  .Post__title__link {
+  .Article__title__link {
     text-decoration: none;
     border-bottom: 2px solid transparent;
     color: #ffffff; }
-    .Post__title__link:hover {
+    .Article__title__link:hover {
       border-bottom: 2px solid #ffffff;
       background-color: rgba(255, 255, 255, 0.3); }
     @media all and (max-width: 600px) {
-      .Post__title__link {
+      .Article__title__link {
         font-size: 30px; } }
-  .Post__meta__format {
+  .Article__meta__format {
     display: inline-block;
     text-align: center;
     vertical-align: middle;
@@ -271,110 +244,104 @@ table {
     color: #fa3939;
     font-size: 30px;
     padding: 25px; }
-  .Post__meta__author, .Post__meta__date {
+  .Article__meta__author, .Article__meta__date {
     color: #ffffff;
     margin-left: 50px; }
     @media all and (max-width: 440px) {
-      .Post__meta__author, .Post__meta__date {
+      .Article__meta__author, .Article__meta__date {
         margin-left: 25px; } }
-  .Post__meta__author::before, .Post__meta__date::before {
+  .Article__meta__author::before, .Article__meta__date::before {
     margin-right: 10px; }
-  .Post--yellow .Post__content a {
-    border-bottom: 1px solid #ffd633; }
-    .Post--yellow .Post__content a:hover {
-      color: #ffd633; }
-  .Post--yellow .Post__header {
-    background-color: #ffd633; }
-  .Post--yellow .Post__header .Post__meta__format {
-    color: #ffd633; }
-  .Post--red .Post__content a {
-    border-bottom: 1px solid #fa3939; }
-    .Post--red .Post__content a:hover {
-      color: #fa3939; }
-  .Post--red .Post__header {
-    background-color: #fa3939; }
-  .Post--red .Post__header .Post__meta__format {
-    color: #fa3939; }
-  .Post--blue .Post__content a {
-    border-bottom: 1px solid #1eadff; }
-    .Post--blue .Post__content a:hover {
-      color: #1eadff; }
-  .Post--blue .Post__header {
-    background-color: #1eadff; }
-  .Post--blue .Post__header .Post__meta__format {
-    color: #1eadff; }
-  .Post--green .Post__content a {
-    border-bottom: 1px solid #5f9f34; }
-    .Post--green .Post__content a:hover {
-      color: #5f9f34; }
-  .Post--green .Post__header {
-    background-color: #5f9f34; }
-  .Post--green .Post__header .Post__meta__format {
-    color: #5f9f34; }
-
-.Page {
-  margin-top: 80px;
-  /*
-     *  Blue
-     */
-  /*
-     *  Green
-     */
-  /*
-     *  Yellow
-     */
-  /*
-     *  Red
-     */ }
-  .Page__header {
-    background-color: #fa3939;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 230px; }
-  .Page__title {
-    text-align: center;
-    font-size: 50px;
-    color: #ffffff; }
-  .Page__content {
+  .Article__content {
     font-size: 20px;
     line-height: 30px;
     margin-top: 50px; }
-  .Page__content a {
-    color: #000000;
-    text-decoration: none; }
-  .Page--blue blockquote {
-    border-color: #1eadff; }
-  .Page--blue header {
-    background-color: #1eadff; }
-  .Page--blue .Page__content a {
-    border-bottom: 1px solid #1eadff; }
-    .Page--blue .Page__content a:hover {
-      color: #1eadff; }
-  .Page--green blockquote {
-    border-color: #5f9f34; }
-  .Page--green header {
-    background-color: #5f9f34; }
-  .Page--green .Page__content a {
-    border-bottom: 1px solid #5f9f34; }
-    .Page--green .Page__content a:hover {
-      color: #5f9f34; }
-  .Page--yellow blockquote {
-    border-color: #ffd633; }
-  .Page--yellow header {
-    background-color: #ffd633; }
-  .Page--yellow .Page__content a {
+    .Article__content a {
+      color: #000000;
+      text-decoration: none; }
+    .Article__content p, .Article__content blockquote, .Article__content h1, .Article__content h2, .Article__content h3, .Article__content h4, .Article__content h5, .Article__content h6, .Article__content ul, .Article__content ol, .Article__content hr {
+      margin-bottom: 25px; }
+    .Article__content blockquote {
+      padding-left: 25px;
+      border-left: 2px solid #000000; }
+    .Article__content ul, .Article__content ol {
+      list-style: initial;
+      list-style-position: inside; }
+    .Article__content hr {
+      border-bottom: 0;
+      border-style: solid; }
+    .Article__content h1 {
+      font-size: 40px; }
+    .Article__content h2 {
+      font-size: 35px; }
+    .Article__content h3 {
+      font-size: 30px; }
+    .Article__content h4 {
+      font-size: 25px; }
+    .Article__content h5 {
+      font-size: 20px; }
+    .Article__content h6 {
+      font-size: 15px; }
+  .Article--yellow .Article__content a {
     border-bottom: 1px solid #ffd633; }
-    .Page--yellow .Page__content a:hover {
+    .Article--yellow .Article__content a:hover {
       color: #ffd633; }
-  .Page--red blockquote {
-    border-color: #fa3939; }
-  .Page--red header {
-    background-color: #fa3939; }
-  .Page--red .Page__content a {
+  .Article--yellow .Article__content blockquote {
+    border-color: #ffd633; }
+  .Article--yellow .Article__content h1, .Article--yellow .Article__content h2, .Article--yellow .Article__content h3, .Article--yellow .Article__content h4, .Article--yellow .Article__content h5, .Article--yellow .Article__content h6 {
+    /*border-bottom: 1px solid $color;*/
+    color: #ffd633; }
+  .Article--yellow .Article__content hr {
+    border-color: #ffd633; }
+  .Article--yellow .Article__header {
+    background-color: #ffd633; }
+  .Article--yellow .Article__header .Article__meta__format {
+    color: #ffd633; }
+  .Article--red .Article__content a {
     border-bottom: 1px solid #fa3939; }
-    .Page--red .Page__content a:hover {
+    .Article--red .Article__content a:hover {
       color: #fa3939; }
+  .Article--red .Article__content blockquote {
+    border-color: #fa3939; }
+  .Article--red .Article__content h1, .Article--red .Article__content h2, .Article--red .Article__content h3, .Article--red .Article__content h4, .Article--red .Article__content h5, .Article--red .Article__content h6 {
+    /*border-bottom: 1px solid $color;*/
+    color: #fa3939; }
+  .Article--red .Article__content hr {
+    border-color: #fa3939; }
+  .Article--red .Article__header {
+    background-color: #fa3939; }
+  .Article--red .Article__header .Article__meta__format {
+    color: #fa3939; }
+  .Article--blue .Article__content a {
+    border-bottom: 1px solid #1eadff; }
+    .Article--blue .Article__content a:hover {
+      color: #1eadff; }
+  .Article--blue .Article__content blockquote {
+    border-color: #1eadff; }
+  .Article--blue .Article__content h1, .Article--blue .Article__content h2, .Article--blue .Article__content h3, .Article--blue .Article__content h4, .Article--blue .Article__content h5, .Article--blue .Article__content h6 {
+    /*border-bottom: 1px solid $color;*/
+    color: #1eadff; }
+  .Article--blue .Article__content hr {
+    border-color: #1eadff; }
+  .Article--blue .Article__header {
+    background-color: #1eadff; }
+  .Article--blue .Article__header .Article__meta__format {
+    color: #1eadff; }
+  .Article--green .Article__content a {
+    border-bottom: 1px solid #5f9f34; }
+    .Article--green .Article__content a:hover {
+      color: #5f9f34; }
+  .Article--green .Article__content blockquote {
+    border-color: #5f9f34; }
+  .Article--green .Article__content h1, .Article--green .Article__content h2, .Article--green .Article__content h3, .Article--green .Article__content h4, .Article--green .Article__content h5, .Article--green .Article__content h6 {
+    /*border-bottom: 1px solid $color;*/
+    color: #5f9f34; }
+  .Article--green .Article__content hr {
+    border-color: #5f9f34; }
+  .Article--green .Article__header {
+    background-color: #5f9f34; }
+  .Article--green .Article__header .Article__meta__format {
+    color: #5f9f34; }
 
 body {
   font-family: Roboto, sans-serif;
@@ -403,12 +370,5 @@ header.Header, main, footer {
 nav {
   flex: 1;
   text-align: right; }
-
-p + blockquote, p + p, blockquote + p {
-  margin-top: 25px; }
-
-blockquote {
-  padding-left: 25px;
-  border-left: 2px solid #000000; }
 
 /*# sourceMappingURL=main.css.map */
