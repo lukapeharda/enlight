@@ -28,17 +28,29 @@ import './polyfills/classlist.js';
             }
             menu.querySelector('.current-menu-item').classList.remove('current-menu-item');
             item.classList.add('current-menu-item');
+        },
+        closeMenu = function(ev) {
+            menu.classList.remove('open');
+            menu.previousElementSibling.classList.remove('is-active');
         };
     [].slice.call(menuItems).forEach(function(el) {
+        el.addEventListener('click', closeMenu);
         el.addEventListener('click', setCurrent);
     });
 });
 
-var hamburgers = document.getElementsByClassName('hamburger');
-
-for (var a = 0; a < hamburgers.length; a++) {
-    hamburgers[a].addEventListener('click', function(event) {
+[].slice.call(document.querySelectorAll('.hamburger')).forEach(function(hamburger) {
+    hamburger.addEventListener('click', function(event) {
         event.currentTarget.classList.toggle('is-active');
         document.getElementsByClassName('MainMenu')[0].classList.toggle('open');
     });
-}
+});
+
+// var hamburgers = document.getElementsByClassName('hamburger');
+
+// for (var a = 0; a < hamburgers.length; a++) {
+//     hamburgers[a].addEventListener('click', function(event) {
+//         event.currentTarget.classList.toggle('is-active');
+//         document.getElementsByClassName('MainMenu')[0].classList.toggle('open');
+//     });
+// }
