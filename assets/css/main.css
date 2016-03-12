@@ -123,25 +123,9 @@ table {
   .hamburger--3dx.is-active .hamburger-inner::after {
     transform: translate3d(0, -6px, 0) rotate(-45deg); }
 
-.hamburger--3dx-r .hamburger-box {
-  perspective: 60px; }
-
-.hamburger--3dx-r .hamburger-inner {
-  transition: transform 0.2s cubic-bezier(0.645, 0.045, 0.355, 1), background-color 0s 0.1s cubic-bezier(0.645, 0.045, 0.355, 1); }
-  .hamburger--3dx-r .hamburger-inner::before, .hamburger--3dx-r .hamburger-inner::after {
-    transition: transform 0s 0.1s cubic-bezier(0.645, 0.045, 0.355, 1); }
-
-.hamburger--3dx-r.is-active .hamburger-inner {
-  background-color: transparent;
-  transform: rotateY(-180deg); }
-  .hamburger--3dx-r.is-active .hamburger-inner::before {
-    transform: translate3d(0, 6px, 0) rotate(45deg); }
-  .hamburger--3dx-r.is-active .hamburger-inner::after {
-    transform: translate3d(0, -6px, 0) rotate(-45deg); }
-
 .hamburger {
   display: none; }
-  @media all and (max-width: 950px) {
+  @media all and (max-width: 600px) {
     .hamburger {
       display: inline-block;
       position: fixed;
@@ -150,10 +134,20 @@ table {
       z-index: 100;
       outline: none; } }
 
+nav {
+  flex: 1; }
+  @media all and (max-width: 950px) and (min-width: 600px) {
+    nav {
+      display: flex;
+      width: 100%; } }
+
 .MainMenu {
   display: flex;
   justify-content: flex-end; }
-  @media all and (max-width: 950px) {
+  @media all and (max-width: 950px) and (min-width: 600px) {
+    .MainMenu {
+      margin-top: 50px; } }
+  @media all and (max-width: 600px) {
     .MainMenu {
       position: fixed;
       flex-direction: column;
@@ -171,28 +165,48 @@ table {
         transform: translateY(0); } }
   .MainMenu__item + .MainMenu__item {
     padding-left: 10px; }
+    @media all and (max-width: 600px) {
+      .MainMenu__item + .MainMenu__item {
+        padding: 0;
+        margin-top: 15px; } }
+  .MainMenu__item {
+    width: 80%; }
+    @media all and (max-width: 600px) {
+      .MainMenu__item.current-menu-item, .MainMenu__item:hover {
+        background-color: rgba(0, 0, 0, 0.75); } }
   .MainMenu__item a {
     font-size: 20px;
     color: #000000;
     text-decoration: none;
     padding: 10px 15px;
-    background-color: transparent; }
-  .MainMenu__item.current-menu-item a, .MainMenu__item a:hover {
-    color: #ffffff;
-    background-color: #fa3939;
-    transition: all ease .5s; }
-  .MainMenu__item--red.current-menu-item a, .MainMenu__item--red a:hover {
-    color: #ffffff;
-    background-color: #fa3939; }
-  .MainMenu__item--yellow.current-menu-item a, .MainMenu__item--yellow a:hover {
-    color: #ffffff;
-    background-color: #ffd633; }
-  .MainMenu__item--blue.current-menu-item a, .MainMenu__item--blue a:hover {
-    color: #ffffff;
-    background-color: #1eadff; }
-  .MainMenu__item--green.current-menu-item a, .MainMenu__item--green a:hover {
-    color: #ffffff;
-    background-color: #5f9f34; }
+    background-color: transparent;
+    display: inline-block; }
+    @media all and (max-width: 600px) {
+      .MainMenu__item a {
+        width: 100%;
+        text-align: center;
+        color: rgba(0, 0, 0, 0.75);
+        box-sizing: border-box; } }
+  @media all and (min-width: 600px) {
+    .MainMenu__item.current-menu-item a, .MainMenu__item a:hover {
+      color: #ffffff;
+      background-color: #fa3939;
+      transition: all ease .5s; }
+    .MainMenu__item--red.current-menu-item a, .MainMenu__item--red a:hover {
+      color: #ffffff;
+      background-color: #fa3939; }
+    .MainMenu__item--yellow.current-menu-item a, .MainMenu__item--yellow a:hover {
+      color: #ffffff;
+      background-color: #ffd633; }
+    .MainMenu__item--blue.current-menu-item a, .MainMenu__item--blue a:hover {
+      color: #ffffff;
+      background-color: #1eadff; }
+    .MainMenu__item--green.current-menu-item a, .MainMenu__item--green a:hover {
+      color: #ffffff;
+      background-color: #5f9f34; } }
+  @media all and (max-width: 600px) {
+    .MainMenu__item.current-menu-item a, .MainMenu__item a:hover {
+      color: #fa3939; } }
 
 .Pagination {
   display: flex;
@@ -414,9 +428,5 @@ header.Header, main, footer {
   display: flex;
   align-items: center;
   justify-content: center; }
-
-nav {
-  flex: 1;
-  text-align: right; }
 
 /*# sourceMappingURL=main.css.map */

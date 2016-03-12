@@ -3,7 +3,7 @@
 .hamburger {
     display: none;
 
-    @media all and ($tablet_mq) {
+    @media all and ($phablet_mq) {
         display: inline-block;
         position: fixed;
         top: 0px;
@@ -14,11 +14,24 @@
     }
 }
 
+nav {
+    flex: 1;
+
+    @media all and (max-width: $tablet) and (min-width: $phablet) {
+        display: flex;
+        width: 100%;
+    }
+}
+
 .MainMenu {
     display: flex;
     justify-content: flex-end;
 
-    @media all and ($tablet_mq) {
+    @media all and (max-width: $tablet) and (min-width: $phablet) {
+        margin-top: 50px;
+    }
+
+    @media all and ($phablet_mq) {
         position: fixed;
         flex-direction: column;
         justify-content: center;
@@ -39,6 +52,21 @@
 
     &__item+&__item {
         padding-left: 10px;
+
+        @media all and ($phablet_mq) {
+            padding: 0;
+            margin-top: 15px;
+        }
+    }
+
+    &__item {
+        width: 80%;
+
+        @media all and ($phablet_mq) {
+            &.current-menu-item, &:hover {
+                background-color: rgba($text_color, 0.75);
+            }
+        }
     }
 
     &__item a {
@@ -47,15 +75,31 @@
         text-decoration: none;
         padding: 10px 15px;
         background-color: transparent;
+        display: inline-block;
+
+        @media all and ($phablet_mq) {
+            width: 100%;
+            text-align: center;
+            color: rgba($text_color, 0.75);
+            box-sizing: border-box;
+        }
     }
 
-    &__item.current-menu-item a, &__item a:hover {
-        color: #ffffff;
-        background-color: $red;
-        transition: all ease .5s;
+    @media all and (min-width: $phablet) {
+        &__item.current-menu-item a, &__item a:hover {
+            color: #ffffff;
+            background-color: $red;
+            transition: all ease .5s;
+        }
+        @include menu-item-color('red', $red);
+        @include menu-item-color('yellow', $yellow);
+        @include menu-item-color('blue', $blue);
+        @include menu-item-color('green', $green);
     }
-    @include menu-item-color('red', $red);
-    @include menu-item-color('yellow', $yellow);
-    @include menu-item-color('blue', $blue);
-    @include menu-item-color('green', $green);
+
+    @media all and ($phablet_mq) {
+        &__item.current-menu-item a, &__item a:hover {
+            color: $primary;
+        }
+    }
 }
