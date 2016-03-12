@@ -19983,11 +19983,7 @@
 	        return _react2.default.createElement(
 	            "div",
 	            { className: "LoadingIndicator" },
-	            _react2.default.createElement(
-	                "p",
-	                null,
-	                "Loading..."
-	            )
+	            _react2.default.createElement("img", { src: enlight.loading })
 	        );
 	    }
 	});

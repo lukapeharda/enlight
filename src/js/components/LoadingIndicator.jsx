@@ -4,7 +4,7 @@ module.exports = React.createClass({
     render: function() {
         return (
             <div className="LoadingIndicator">
-                <p>Loading...</p>
+                <img src={ enlight.loading } />
             </div>
         );
     }

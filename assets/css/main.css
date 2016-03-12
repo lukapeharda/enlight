@@ -175,14 +175,24 @@ table {
     font-size: 20px;
     color: #000000;
     text-decoration: none;
-    padding: 5px 10px;
-    border-bottom: 2px solid #fa3939; }
-    .MainMenu__item a:hover {
-      color: #fa3939; }
-  .MainMenu__item--green a {
-    border-bottom: 2px solid #5f9f34; }
-    .MainMenu__item--green a:hover {
-      color: #5f9f34; }
+    padding: 10px 15px;
+    background-color: transparent; }
+  .MainMenu__item.current-menu-item a, .MainMenu__item a:hover {
+    color: #ffffff;
+    background-color: #fa3939;
+    transition: all ease .5s; }
+  .MainMenu__item--red.current-menu-item a, .MainMenu__item--red a:hover {
+    color: #ffffff;
+    background-color: #fa3939; }
+  .MainMenu__item--yellow.current-menu-item a, .MainMenu__item--yellow a:hover {
+    color: #ffffff;
+    background-color: #ffd633; }
+  .MainMenu__item--blue.current-menu-item a, .MainMenu__item--blue a:hover {
+    color: #ffffff;
+    background-color: #1eadff; }
+  .MainMenu__item--green.current-menu-item a, .MainMenu__item--green a:hover {
+    color: #ffffff;
+    background-color: #5f9f34; }
 
 .Pagination {
   display: flex;
@@ -209,6 +219,44 @@ table {
   .LoadingIndicator p {
     font-size: 20px;
     color: #fa3939; }
+  .LoadingIndicator img {
+    -webkit-animation: spin 1s infinite linear;
+    -moz-animation: spin1 2s infinite linear;
+    -ms-animation: spin1 2s infinite linear;
+    -o-animation: spin1 2s infinite linear;
+    animation: spin 1s infinite linear;
+    width: 50px;
+    height: auto; }
+
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg); }
+  100% {
+    -webkit-transform: rotate(360deg); } }
+
+@-moz-keyframes spin {
+  0% {
+    -moz-transform: rotate(0deg); }
+  100% {
+    -moz-transform: rotate(360deg); } }
+
+@-ms-keyframes spin {
+  0% {
+    -ms-transform: rotate(0deg); }
+  100% {
+    -ms-transform: rotate(360deg); } }
+
+@-o-keyframes spin {
+  0% {
+    -o-transform: rotate(0deg); }
+  100% {
+    -o-transform: rotate(360deg); } }
+
+@-keyframes spin {
+  0% {
+    transform: rotate(0deg); }
+  100% {
+    transform: rotate(360deg); } }
 
 .Article {
   margin-top: 80px; }

@@ -45,19 +45,17 @@
         font-size: 20px;
         color: $text_color;
         text-decoration: none;
-        padding: 5px 10px;
-        border-bottom: 2px solid $red;
-
-        &:hover {
-            color: $red;
-        }
+        padding: 10px 15px;
+        background-color: transparent;
     }
 
-    &__item--green a {
-        border-bottom: 2px solid $green;
-
-        &:hover {
-            color: $green;
-        }
+    &__item.current-menu-item a, &__item a:hover {
+        color: #ffffff;
+        background-color: $red;
+        transition: all ease .5s;
     }
+    @include menu-item-color('red', $red);
+    @include menu-item-color('yellow', $yellow);
+    @include menu-item-color('blue', $blue);
+    @include menu-item-color('green', $green);
 }

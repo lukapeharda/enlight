@@ -28,7 +28,8 @@ function enlight_enqueue_assets()
     wp_enqueue_script('enlight-main', get_template_directory_uri() . '/assets/js/main.js', array(), false, true);
     wp_localize_script('enlight-main', 'enlight', array(
         'endpoint'  => home_url('wp-json'),
-        'baseurl'   => home_url('/')
+        'baseurl'   => home_url('/'),
+        'loading'   => get_template_directory_uri() . '/assets/images/lp-logo-black.png',
     ));
 }
 add_action('wp_enqueue_scripts', 'enlight_enqueue_assets');

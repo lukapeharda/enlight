@@ -24,3 +24,10 @@
         color: $color;
     }
 }
+
+@mixin menu-item-color($name, $color) {
+    &__item--#{$name}.current-menu-item a, &__item--#{$name} a:hover {
+        color: #ffffff;
+        background-color: $color;
+    }
+}
