@@ -1,11 +1,12 @@
 import React from 'react';
 import { fetchPost } from '../actions.js';
 import ArticleMixin from '../mixins/article.js';
+import TitleMixin from '../mixins/title.js';
 import PostFormatIcon from './PostFormatIcon.jsx';
 import LoadingIndicator from './LoadingIndicator.jsx';
 
 module.exports = React.createClass({
-    mixins: [ArticleMixin],
+    mixins: [ArticleMixin, TitleMixin],
 
     getInitialState: function() {
         return {
@@ -19,7 +20,10 @@ module.exports = React.createClass({
             that.setState({
                 post: data[0]
             });
-        }, function (error) {
+            return data[0];
+        }).then(function(post) {
+            that.setTitle(post);
+        }).catch(function (error) {
             console.error(error);
         });
     },

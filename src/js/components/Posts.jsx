@@ -1,10 +1,13 @@
 import React from 'react';
 import Post from './Post.jsx';
 import LoadingIndicator from './LoadingIndicator.jsx';
+import TitleMixin from '../mixins/title.js';
 import Pagination from './Pagination.jsx';
 import { fetchPosts } from '../actions.js';
 
 module.exports = React.createClass({
+    mixins: [TitleMixin],
+
     getInitialState: function() {
         return {
             'posts': [],
@@ -15,13 +18,16 @@ module.exports = React.createClass({
 
     componentDidMount: function () {
         var that = this;
-        fetchPosts(this.props.page).then(function (data) {
+        fetchPosts(this.props.page).then(function(data) {
             that.setState({
                 posts: data,
                 next: data._paging && data._paging.next,
                 prev: data._paging && data._paging.prev,
             });
-        }, function (error) {
+            return data[0];
+        }).then(function() {
+            that.setTitle();
+        }).catch(function (error) {
             console.error(error);
         });
     },

@@ -9,6 +9,10 @@ function enlight_setup_theme()
 {
     // Nav menus
     register_nav_menu('primary', __('Main Menu', 'enlight'));
+    register_nav_menu('social', __('Social Menu', 'enlight'));
+
+    // Theme supports
+    add_theme_support('title-tag');
 }
 add_action('after_setup_theme', 'enlight_setup_theme');
 
@@ -27,9 +31,10 @@ function enlight_enqueue_assets()
     // Scripts
     wp_enqueue_script('enlight-main', get_template_directory_uri() . '/assets/js/main.js', array(), false, true);
     wp_localize_script('enlight-main', 'enlight', array(
-        'endpoint'  => home_url('wp-json'),
-        'baseurl'   => home_url('/'),
-        'loading'   => get_template_directory_uri() . '/assets/images/lp-logo-black.png',
+        'endpoint'      => home_url('wp-json'),
+        'baseurl'       => home_url('/'),
+        'loading'       => get_template_directory_uri() . '/assets/images/lp-logo-black.png',
+        'title_default' => get_bloginfo('title'),
     ));
 }
 add_action('wp_enqueue_scripts', 'enlight_enqueue_assets');

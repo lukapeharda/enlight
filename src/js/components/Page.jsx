@@ -1,10 +1,11 @@
 import React from 'react';
 import { fetchPage } from '../actions.js';
 import ArticleMixin from '../mixins/article.js';
+import TitleMixin from '../mixins/title.js';
 import LoadingIndicator from './LoadingIndicator.jsx';
 
 module.exports = React.createClass({
-    mixins: [ArticleMixin],
+    mixins: [ArticleMixin, TitleMixin],
 
     getInitialState: function() {
         return {
@@ -14,11 +15,14 @@ module.exports = React.createClass({
 
     componentDidMount: function () {
         var that = this;
-        fetchPage(this.props.slug).then(function (data) {
+        fetchPage(this.props.slug).then(function(data) {
             that.setState({
                 page: data[0]
             });
-        }, function (error) {
+            return data[0];
+        }).then(function(page) {
+            that.setTitle(page);
+        }).catch(function (error) {
             console.error(error);
         });
     },
