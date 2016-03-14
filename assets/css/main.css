@@ -169,9 +169,9 @@ nav {
       .MainMenu__item + .MainMenu__item {
         padding: 0;
         margin-top: 15px; } }
-  .MainMenu__item {
-    width: 80%; }
-    @media all and (max-width: 600px) {
+  @media all and (max-width: 600px) {
+    .MainMenu__item {
+      width: 80%; }
       .MainMenu__item.current-menu-item, .MainMenu__item:hover {
         background-color: rgba(0, 0, 0, 0.75); } }
   .MainMenu__item a {

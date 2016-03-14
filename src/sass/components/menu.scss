@@ -60,9 +60,9 @@ nav {
     }
 
     &__item {
-        width: 80%;
-
         @media all and ($phablet_mq) {
+            width: 80%;
+
             &.current-menu-item, &:hover {
                 background-color: rgba($text_color, 0.75);
             }
