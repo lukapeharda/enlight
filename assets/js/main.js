@@ -115,11 +115,7 @@
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-	var _reactAddonsCssTransitionGroup = __webpack_require__(160);
-
-	var _reactAddonsCssTransitionGroup2 = _interopRequireDefault(_reactAddonsCssTransitionGroup);
-
-	var _Posts = __webpack_require__(167);
+	var _Posts = __webpack_require__(160);
 
 	var _Posts2 = _interopRequireDefault(_Posts);
 
@@ -153,25 +149,13 @@
 	        next(context);
 	    },
 	    posts: function posts(context) {
-	        _reactDom2.default.render(_react2.default.createElement(
-	            _reactAddonsCssTransitionGroup2.default,
-	            { component: 'div', transitionName: 'slide-in', transitionAppear: true, transitionAppearTimeout: 200, transitionEnterTimeout: 200, transitionLeaveTimeout: 200 },
-	            _react2.default.createElement(_Posts2.default, { page: context.currentPage })
-	        ), document.getElementById('app'));
+	        _reactDom2.default.render(_react2.default.createElement(_Posts2.default, { page: context.currentPage }), document.getElementById('app'));
 	    },
 	    page: function page(context) {
-	        _reactDom2.default.render(_react2.default.createElement(
-	            _reactAddonsCssTransitionGroup2.default,
-	            { component: 'div', transitionName: 'slide-in', transitionAppear: true, transitionAppearTimeout: 200, transitionEnterTimeout: 200, transitionLeaveTimeout: 200 },
-	            _react2.default.createElement(_Page2.default, { slug: context.params.slug })
-	        ), document.getElementById('app'));
+	        _reactDom2.default.render(_react2.default.createElement(_Page2.default, { slug: context.params.slug }), document.getElementById('app'));
 	    },
 	    post: function post(context) {
-	        _reactDom2.default.render(_react2.default.createElement(
-	            _reactAddonsCssTransitionGroup2.default,
-	            { component: 'div', transitionName: 'slide-in', transitionAppear: true, transitionAppearTimeout: 200, transitionEnterTimeout: 200, transitionLeaveTimeout: 200 },
-	            _react2.default.createElement(_SinglePost2.default, { slug: context.params.slug })
-	        ), document.getElementById('app'));
+	        _reactDom2.default.render(_react2.default.createElement(_SinglePost2.default, { slug: context.params.slug }), document.getElementById('app'));
 	    }
 	};
 
@@ -19782,10 +19766,99 @@
 /* 160 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(161);
+	'use strict';
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactAddonsCssTransitionGroup = __webpack_require__(161);
+
+	var _reactAddonsCssTransitionGroup2 = _interopRequireDefault(_reactAddonsCssTransitionGroup);
+
+	var _Post = __webpack_require__(168);
+
+	var _Post2 = _interopRequireDefault(_Post);
+
+	var _LoadingIndicator = __webpack_require__(171);
+
+	var _LoadingIndicator2 = _interopRequireDefault(_LoadingIndicator);
+
+	var _Pagination = __webpack_require__(172);
+
+	var _Pagination2 = _interopRequireDefault(_Pagination);
+
+	var _title = __webpack_require__(173);
+
+	var _title2 = _interopRequireDefault(_title);
+
+	var _actions = __webpack_require__(174);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	module.exports = _react2.default.createClass({
+	    displayName: 'exports',
+
+	    mixins: [_title2.default],
+
+	    getInitialState: function getInitialState() {
+	        return {
+	            'posts': [],
+	            'next': false,
+	            'prev': false
+	        };
+	    },
+
+	    componentDidMount: function componentDidMount() {
+	        var that = this;
+	        (0, _actions.fetchPosts)(this.props.page).then(function (data) {
+	            that.setState({
+	                posts: data,
+	                next: data._paging && data._paging.next,
+	                prev: data._paging && data._paging.prev
+	            });
+	            return data[0];
+	        }).then(function () {
+	            that.setTitle();
+	        }).catch(function (error) {
+	            console.error(error);
+	        });
+	    },
+
+	    componentDidUpdate: function componentDidUpdate(prevProps) {
+	        if (prevProps.page !== this.props.page) {
+	            // Reset to initial to trigger loading
+	            this.setState(this.getInitialState());
+
+	            this.componentDidMount();
+	        }
+	    },
+
+	    render: function render() {
+	        if (this.state.posts.length === 0) {
+	            return _react2.default.createElement(_LoadingIndicator2.default, null);
+	        } else {
+	            var posts = this.state.posts.map(function (post) {
+	                return _react2.default.createElement(_Post2.default, { key: post.id, post: post });
+	            });
+	            return _react2.default.createElement(
+	                _reactAddonsCssTransitionGroup2.default,
+	                { component: 'div', className: 'Posts', transitionName: 'slide-in', transitionAppear: true, transitionAppearTimeout: 200, transitionEnterTimeout: 200, transitionLeaveTimeout: 200 },
+	                posts,
+	                _react2.default.createElement(_Pagination2.default, { current: this.props.page, prev: this.state.prev, next: this.state.next })
+	            );
+	        }
+	    }
+	});
 
 /***/ },
 /* 161 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__(162);
+
+/***/ },
+/* 162 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -19806,8 +19879,8 @@
 
 	var assign = __webpack_require__(40);
 
-	var ReactTransitionGroup = __webpack_require__(162);
-	var ReactCSSTransitionGroupChild = __webpack_require__(164);
+	var ReactTransitionGroup = __webpack_require__(163);
+	var ReactCSSTransitionGroupChild = __webpack_require__(165);
 
 	function createTransitionTimeoutPropValidator(transitionType) {
 	  var timeoutPropName = 'transition' + transitionType + 'Timeout';
@@ -19873,7 +19946,7 @@
 	module.exports = ReactCSSTransitionGroup;
 
 /***/ },
-/* 162 */
+/* 163 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -19890,7 +19963,7 @@
 	'use strict';
 
 	var React = __webpack_require__(3);
-	var ReactTransitionChildMapping = __webpack_require__(163);
+	var ReactTransitionChildMapping = __webpack_require__(164);
 
 	var assign = __webpack_require__(40);
 	var emptyFunction = __webpack_require__(16);
@@ -20083,7 +20156,7 @@
 	module.exports = ReactTransitionGroup;
 
 /***/ },
-/* 163 */
+/* 164 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -20186,7 +20259,7 @@
 	module.exports = ReactTransitionChildMapping;
 
 /***/ },
-/* 164 */
+/* 165 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -20206,8 +20279,8 @@
 	var React = __webpack_require__(3);
 	var ReactDOM = __webpack_require__(4);
 
-	var CSSCore = __webpack_require__(165);
-	var ReactTransitionEvents = __webpack_require__(166);
+	var CSSCore = __webpack_require__(166);
+	var ReactTransitionEvents = __webpack_require__(167);
 
 	var onlyChild = __webpack_require__(157);
 
@@ -20356,7 +20429,7 @@
 	module.exports = ReactCSSTransitionGroupChild;
 
 /***/ },
-/* 165 */
+/* 166 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -20459,7 +20532,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
 
 /***/ },
-/* 166 */
+/* 167 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -20571,91 +20644,6 @@
 	};
 
 	module.exports = ReactTransitionEvents;
-
-/***/ },
-/* 167 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var _react = __webpack_require__(2);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _Post = __webpack_require__(168);
-
-	var _Post2 = _interopRequireDefault(_Post);
-
-	var _LoadingIndicator = __webpack_require__(171);
-
-	var _LoadingIndicator2 = _interopRequireDefault(_LoadingIndicator);
-
-	var _title = __webpack_require__(172);
-
-	var _title2 = _interopRequireDefault(_title);
-
-	var _Pagination = __webpack_require__(173);
-
-	var _Pagination2 = _interopRequireDefault(_Pagination);
-
-	var _actions = __webpack_require__(174);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	module.exports = _react2.default.createClass({
-	    displayName: 'exports',
-
-	    mixins: [_title2.default],
-
-	    getInitialState: function getInitialState() {
-	        return {
-	            'posts': [],
-	            'next': false,
-	            'prev': false
-	        };
-	    },
-
-	    componentDidMount: function componentDidMount() {
-	        var that = this;
-	        (0, _actions.fetchPosts)(this.props.page).then(function (data) {
-	            that.setState({
-	                posts: data,
-	                next: data._paging && data._paging.next,
-	                prev: data._paging && data._paging.prev
-	            });
-	            return data[0];
-	        }).then(function () {
-	            that.setTitle();
-	        }).catch(function (error) {
-	            console.error(error);
-	        });
-	    },
-
-	    componentDidUpdate: function componentDidUpdate(prevProps) {
-	        if (prevProps.page !== this.props.page) {
-	            // Reset to initial to trigger loading
-	            this.setState(this.getInitialState());
-
-	            this.componentDidMount();
-	        }
-	    },
-
-	    render: function render() {
-	        if (this.state.posts.length === 0) {
-	            return _react2.default.createElement(_LoadingIndicator2.default, null);
-	        } else {
-	            var posts = this.state.posts.map(function (post) {
-	                return _react2.default.createElement(_Post2.default, { key: post.id, post: post });
-	            });
-	            return _react2.default.createElement(
-	                'div',
-	                { className: 'Posts' },
-	                posts,
-	                _react2.default.createElement(_Pagination2.default, { current: this.props.page, prev: this.state.prev, next: this.state.next })
-	            );
-	        }
-	    }
-	});
 
 /***/ },
 /* 168 */
@@ -20789,9 +20777,9 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactDom = __webpack_require__(159);
+	var _reactAddonsCssTransitionGroup = __webpack_require__(161);
 
-	var _reactDom2 = _interopRequireDefault(_reactDom);
+	var _reactAddonsCssTransitionGroup2 = _interopRequireDefault(_reactAddonsCssTransitionGroup);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -20800,39 +20788,19 @@
 
 	    render: function render() {
 	        return _react2.default.createElement(
-	            'div',
-	            { className: 'LoadingIndicator', key: 'loading.1' },
-	            _react2.default.createElement('img', { src: enlight.loading })
+	            _reactAddonsCssTransitionGroup2.default,
+	            { component: 'div', transitionName: 'slide-in', transitionAppear: true, transitionAppearTimeout: 200, transitionEnterTimeout: 200, transitionLeaveTimeout: 200 },
+	            _react2.default.createElement(
+	                'div',
+	                { className: 'LoadingIndicator', key: 'loading.1' },
+	                _react2.default.createElement('img', { src: enlight.loading })
+	            )
 	        );
 	    }
 	});
 
 /***/ },
 /* 172 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-
-	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
-
-	exports.default = {
-	    setTitle: function setTitle(data) {
-	        if ((typeof data === 'undefined' ? 'undefined' : _typeof(data)) == 'object') {
-	            document.title = this.getTitle(data).__html + ' - ' + enlight.title_default;
-	        } else if (typeof data == 'string') {
-	            document.title = data + ' - ' + enlight.title_default;
-	        } else if (typeof data == 'undefined') {
-	            document.title = enlight.title_default;
-	        }
-	    }
-	};
-
-/***/ },
-/* 173 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -20865,6 +20833,30 @@
 	        );
 	    }
 	});
+
+/***/ },
+/* 173 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
+
+	exports.default = {
+	    setTitle: function setTitle(data) {
+	        if ((typeof data === 'undefined' ? 'undefined' : _typeof(data)) == 'object') {
+	            document.title = this.getTitle(data).__html + ' - ' + enlight.title_default;
+	        } else if (typeof data == 'string') {
+	            document.title = data + ' - ' + enlight.title_default;
+	        } else if (typeof data == 'undefined') {
+	            document.title = enlight.title_default;
+	        }
+	    }
+	};
 
 /***/ },
 /* 174 */
@@ -41891,19 +41883,23 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _actions = __webpack_require__(174);
+	var _reactAddonsCssTransitionGroup = __webpack_require__(161);
+
+	var _reactAddonsCssTransitionGroup2 = _interopRequireDefault(_reactAddonsCssTransitionGroup);
+
+	var _LoadingIndicator = __webpack_require__(171);
+
+	var _LoadingIndicator2 = _interopRequireDefault(_LoadingIndicator);
 
 	var _article = __webpack_require__(170);
 
 	var _article2 = _interopRequireDefault(_article);
 
-	var _title = __webpack_require__(172);
+	var _title = __webpack_require__(173);
 
 	var _title2 = _interopRequireDefault(_title);
 
-	var _LoadingIndicator = __webpack_require__(171);
-
-	var _LoadingIndicator2 = _interopRequireDefault(_LoadingIndicator);
+	var _actions = __webpack_require__(174);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -41938,14 +41934,18 @@
 	        } else {
 	            var articleClass = "Article Article--" + this.getPostColor(this.state.page);
 	            return _react2.default.createElement(
-	                'article',
-	                { className: articleClass, key: this.props.id },
+	                _reactAddonsCssTransitionGroup2.default,
+	                { component: 'div', transitionName: 'slide-in', transitionAppear: true, transitionAppearTimeout: 200, transitionEnterTimeout: 200, transitionLeaveTimeout: 200 },
 	                _react2.default.createElement(
-	                    'header',
-	                    { className: 'Article__header' },
-	                    _react2.default.createElement('h1', { className: 'Article__title', dangerouslySetInnerHTML: this.getTitle(this.state.page) })
-	                ),
-	                _react2.default.createElement('div', { className: 'Article__content', dangerouslySetInnerHTML: this.getContent(this.state.page) })
+	                    'article',
+	                    { className: articleClass, key: this.props.id },
+	                    _react2.default.createElement(
+	                        'header',
+	                        { className: 'Article__header' },
+	                        _react2.default.createElement('h1', { className: 'Article__title', dangerouslySetInnerHTML: this.getTitle(this.state.page) })
+	                    ),
+	                    _react2.default.createElement('div', { className: 'Article__content', dangerouslySetInnerHTML: this.getContent(this.state.page) })
+	                )
 	            );
 	        }
 	    }
@@ -41961,15 +41961,9 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _actions = __webpack_require__(174);
+	var _reactAddonsCssTransitionGroup = __webpack_require__(161);
 
-	var _article = __webpack_require__(170);
-
-	var _article2 = _interopRequireDefault(_article);
-
-	var _title = __webpack_require__(172);
-
-	var _title2 = _interopRequireDefault(_title);
+	var _reactAddonsCssTransitionGroup2 = _interopRequireDefault(_reactAddonsCssTransitionGroup);
 
 	var _PostFormatIcon = __webpack_require__(169);
 
@@ -41978,6 +41972,16 @@
 	var _LoadingIndicator = __webpack_require__(171);
 
 	var _LoadingIndicator2 = _interopRequireDefault(_LoadingIndicator);
+
+	var _article = __webpack_require__(170);
+
+	var _article2 = _interopRequireDefault(_article);
+
+	var _title = __webpack_require__(173);
+
+	var _title2 = _interopRequireDefault(_title);
+
+	var _actions = __webpack_require__(174);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -42013,21 +42017,25 @@
 	            var articleClass = "Article Article--" + this.getPostColor(this.state.post);
 
 	            return _react2.default.createElement(
-	                'article',
-	                { className: articleClass, key: this.props.id },
+	                _reactAddonsCssTransitionGroup2.default,
+	                { component: 'div', transitionName: 'slide-in', transitionAppear: true, transitionAppearTimeout: 200, transitionEnterTimeout: 200, transitionLeaveTimeout: 200 },
 	                _react2.default.createElement(
-	                    'header',
-	                    { className: 'Article__header' },
-	                    _react2.default.createElement('h1', { className: 'Article__title', dangerouslySetInnerHTML: this.getTitle(this.state.post) }),
+	                    'article',
+	                    { className: articleClass, key: this.props.id },
 	                    _react2.default.createElement(
-	                        'div',
-	                        { className: 'Article__meta' },
-	                        _react2.default.createElement(_PostFormatIcon2.default, { format: this.getPostFormat(this.state.post) }),
-	                        _react2.default.createElement('span', { className: 'lnr lnr-user Article__meta__author', dangerouslySetInnerHTML: this.getAuthor(this.state.post) }),
-	                        _react2.default.createElement('span', { className: 'lnr lnr-calendar-full Article__meta__date', dangerouslySetInnerHTML: this.getDate(this.state.post) })
-	                    )
-	                ),
-	                _react2.default.createElement('div', { className: 'Article__content', dangerouslySetInnerHTML: this.getContent(this.state.post) })
+	                        'header',
+	                        { className: 'Article__header' },
+	                        _react2.default.createElement('h1', { className: 'Article__title', dangerouslySetInnerHTML: this.getTitle(this.state.post) }),
+	                        _react2.default.createElement(
+	                            'div',
+	                            { className: 'Article__meta' },
+	                            _react2.default.createElement(_PostFormatIcon2.default, { format: this.getPostFormat(this.state.post) }),
+	                            _react2.default.createElement('span', { className: 'lnr lnr-user Article__meta__author', dangerouslySetInnerHTML: this.getAuthor(this.state.post) }),
+	                            _react2.default.createElement('span', { className: 'lnr lnr-calendar-full Article__meta__date', dangerouslySetInnerHTML: this.getDate(this.state.post) })
+	                        )
+	                    ),
+	                    _react2.default.createElement('div', { className: 'Article__content', dangerouslySetInnerHTML: this.getContent(this.state.post) })
+	                )
 	            );
 	        }
 	    }

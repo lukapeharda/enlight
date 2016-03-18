@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 import Posts from './Posts.jsx';
 import Page from './Page.jsx';
@@ -26,28 +25,13 @@ let Controller = {
         next(context);
     },
     posts: function(context) {
-        ReactDOM.render(
-            <ReactCSSTransitionGroup component="div" transitionName="slide-in" transitionAppear={true} transitionAppearTimeout={200} transitionEnterTimeout={200} transitionLeaveTimeout={200}>
-                <Posts page={ context.currentPage } />
-            </ReactCSSTransitionGroup>,
-            document.getElementById('app')
-        );
+        ReactDOM.render(<Posts page={ context.currentPage } />, document.getElementById('app'));
     },
     page: function(context) {
-        ReactDOM.render(
-            <ReactCSSTransitionGroup component="div" transitionName="slide-in" transitionAppear={true} transitionAppearTimeout={200} transitionEnterTimeout={200} transitionLeaveTimeout={200}>
-                <Page slug={ context.params.slug } />
-            </ReactCSSTransitionGroup>,
-            document.getElementById('app')
-        );
+        ReactDOM.render(<Page slug={ context.params.slug } />, document.getElementById('app'));
     },
     post: function(context) {
-        ReactDOM.render(
-            <ReactCSSTransitionGroup component="div" transitionName="slide-in" transitionAppear={true} transitionAppearTimeout={200} transitionEnterTimeout={200} transitionLeaveTimeout={200}>
-                <SinglePost slug={ context.params.slug } />
-            </ReactCSSTransitionGroup>,
-            document.getElementById('app')
-        );
+        ReactDOM.render(<SinglePost slug={ context.params.slug } />, document.getElementById('app'));
     }
 };
 
