@@ -1,7 +1,7 @@
 import React from 'react';
 import Post from './Post.jsx';
 import LoadingIndicator from './LoadingIndicator.jsx';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+
 import TitleMixin from '../mixins/title.js';
 import Pagination from './Pagination.jsx';
 import { fetchPosts } from '../actions.js';
@@ -52,10 +52,10 @@ module.exports = React.createClass({
                 return <Post key={ post.id } post={ post } />;
             });
             return (
-                <ReactCSSTransitionGroup component="div" className="Posts" transitionName="slide-in" transitionAppear={true} transitionAppearTimeout={200} transitionEnterTimeout={200} transitionLeaveTimeout={200}>
+                <div className="Posts">
                     {posts}
                     <Pagination current={ this.props.page } prev={ this.state.prev } next={ this.state.next }/>
-                </ReactCSSTransitionGroup>
+                </div>
             );
         }
     }

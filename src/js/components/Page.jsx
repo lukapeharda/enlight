@@ -3,7 +3,6 @@ import { fetchPage } from '../actions.js';
 import ArticleMixin from '../mixins/article.js';
 import TitleMixin from '../mixins/title.js';
 import LoadingIndicator from './LoadingIndicator.jsx';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 module.exports = React.createClass({
     mixins: [ArticleMixin, TitleMixin],
@@ -36,14 +35,12 @@ module.exports = React.createClass({
         } else {
             var articleClass = "Article Article--" + this.getPostColor(this.state.page);
             return (
-                <ReactCSSTransitionGroup transitionName="slide-in" transitionAppear={true} transitionAppearTimeout={200} transitionEnterTimeout={200} transitionLeaveTimeout={200}>
-                    <article className={ articleClass } key={this.props.id}>
-                        <header className="Article__header">
-                            <h1 className="Article__title" dangerouslySetInnerHTML={ this.getTitle(this.state.page) } />
-                        </header>
-                        <div className="Article__content" dangerouslySetInnerHTML={ this.getContent(this.state.page) } />
-                    </article>
-                </ReactCSSTransitionGroup>
+                <article className={ articleClass } key={this.props.id}>
+                    <header className="Article__header">
+                        <h1 className="Article__title" dangerouslySetInnerHTML={ this.getTitle(this.state.page) } />
+                    </header>
+                    <div className="Article__content" dangerouslySetInnerHTML={ this.getContent(this.state.page) } />
+                </article>
             );
         }
     }
