@@ -81,26 +81,12 @@
 
 	[].slice.call(document.querySelectorAll('.MainMenu')).forEach(function (menu) {
 	    var menuItems = menu.querySelectorAll('.menu-item'),
-	        setCurrent = function setCurrent(ev) {
-	        var item = ev.target.parentNode;
-	        if (item.classList.contains('current-menu-item')) {
-	            return false;
-	        }
-
-	        var current = menu.querySelector('.current-menu-item');
-	        if (current) {
-	            current.classList.remove('current-menu-item');
-	        }
-
-	        item.classList.add('current-menu-item');
-	    },
 	        closeMenu = function closeMenu(ev) {
 	        menu.classList.remove('open');
 	        menu.previousElementSibling.classList.remove('is-active');
 	    };
 	    [].slice.call(menuItems).forEach(function (el) {
 	        el.addEventListener('click', closeMenu);
-	        // el.addEventListener('click', setCurrent);
 	    });
 	});
 
@@ -19979,7 +19965,7 @@
 	    },
 	    getDate: function getDate(data) {
 	        var date = new Date(data.date_gmt);
-	        return { __html: '<time datetime="' + data.date_gmt + '">' + date.toLocaleString(navigator.language) + '</time>' };
+	        return { __html: '<time datetime="' + data.date_gmt + '">' + date.toLocaleDateString(navigator.language) + '</time>' };
 	    }
 	};
 

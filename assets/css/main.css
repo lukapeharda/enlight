@@ -306,12 +306,17 @@ nav {
     color: #fa3939;
     font-size: 30px;
     padding: 25px; }
+    @media all and (max-width: 440px) {
+      .Article__meta__format {
+        font-size: 20px;
+        padding: 15px; } }
   .Article__meta__author, .Article__meta__date {
     color: #ffffff;
     margin-left: 50px; }
     @media all and (max-width: 440px) {
       .Article__meta__author, .Article__meta__date {
-        margin-left: 25px; } }
+        margin-left: 25px;
+        font-size: 12px; } }
   .Article__meta__author::before, .Article__meta__date::before {
     margin-right: 10px; }
   .Article__content {

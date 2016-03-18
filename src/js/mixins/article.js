@@ -26,6 +26,6 @@ export default {
     },
     getDate: function(data) {
         var date = new Date(data.date_gmt);
-        return { __html: '<time datetime="' + data.date_gmt + '">' + date.toLocaleString(navigator.language) + '</time>' }
+        return { __html: '<time datetime="' + data.date_gmt + '">' + date.toLocaleDateString(navigator.language) + '</time>' }
     }
 };
