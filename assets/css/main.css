@@ -221,7 +221,7 @@ nav {
     padding: 15px 0; }
     .Pagination__prev:hover, .Pagination__next:hover {
       opacity: 0.7; }
-  .Pagination a&__next:only-child {
+  .Pagination a.Pagination__next:only-child {
     margin-left: 50%; }
 
 .LoadingIndicator {
