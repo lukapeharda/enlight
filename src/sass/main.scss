@@ -36,3 +36,27 @@ header.Header, main, footer {
     align-items: center;
     justify-content: center;
 }
+
+.slide-in-appear,
+.slide-in-enter {
+    opacity: 0;
+    transform: translateX(100%);
+}
+
+.slide-in-appear.slide-in-appear-active,
+.slide-in-enter.slide-in-enter-active {
+    transform: translateX(0);
+    opacity: 1;
+    transition: all 0.2s ease-out;
+}
+
+.slide-in-leave {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.slide-in-leave.slide-in-leave-active {
+    opacity: 0;
+    transform: translateX(-100%);
+    transition: all 0.2s ease-out;
+}
