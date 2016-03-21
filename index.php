@@ -12,10 +12,12 @@
 
 <body <?php body_class(); ?>>
 
+    <div class="Rainbow"></div>
+
     <header class="Header">
         <h1 class="Logo">
             <a href="<?php bloginfo('siteurl'); ?>" class="Logo__link">
-                <img class="Logo__image" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/lp-logo.png">
+                <img class="Logo__image" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/lp-logo@1x.png" srcset="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/lp-logo@1x.png 1x, <?php echo get_stylesheet_directory_uri(); ?>/assets/images/lp-logo@2x.png 2x, <?php echo get_stylesheet_directory_uri(); ?>/assets/images/lp-logo@3x.png 3x">
                 <span class="Logo__text">lukapeharda.com</span>
             </a>
         </h1>
