@@ -73,8 +73,13 @@
             text-decoration: none;
         }
 
-        p, blockquote, h1, h2, h3, h4, h5, h6, ul, ol, hr {
-            margin-bottom: 25px;
+        p, blockquote, h1, h2, h3, h4, h5, h6, ul, ol {
+            line-height: 1.6;
+            padding-bottom: 25px;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            padding-top: 15px;
         }
 
         blockquote {
@@ -90,6 +95,8 @@
         hr {
             border-bottom: 0;
             border-style: solid;
+            border-left: 0;
+            border-right: 0;
         }
 
         h1 {

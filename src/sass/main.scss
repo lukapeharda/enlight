@@ -12,9 +12,15 @@ body {
     font-family: Roboto, sans-serif;
     color: $text_color;
     font-weight: 300;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+main {
+    flex: 1;
 }
 
-header.Header, main, footer {
+header.Header, main {
     background-color: $content_background;
     max-width: 800px;
     margin: 0 auto;
@@ -43,6 +49,7 @@ header.Header, main, footer {
 
 .Header {
     display: flex;
+    width: 100%;
     align-items: center;
     padding-top: 80px;
 
@@ -56,6 +63,9 @@ header.Header, main, footer {
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: $text_color;
+    color: #ffffff;
+    margin-top: 80px;
 }
 
 .slide-in-appear,
