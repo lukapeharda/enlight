@@ -317,6 +317,8 @@ nav {
       .Article__meta__author, .Article__meta__date {
         margin-left: 25px;
         font-size: 12px; } }
+    .Article__meta__author .lnr, .Article__meta__date .lnr {
+      margin-right: 15px; }
   .Article__meta__author::before, .Article__meta__date::before {
     margin-right: 10px; }
   .Article__content {

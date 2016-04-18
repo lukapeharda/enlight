@@ -22,8 +22,8 @@ module.exports = React.createClass({
                     </h1>
                     <div className="Article__meta">
                         <PostFormatIcon format={ this.getPostFormat(this.state.post) } />
-                        <span className="lnr lnr-user Article__meta__author" dangerouslySetInnerHTML={ this.getAuthor(this.state.post) } />
-                        <span className="lnr lnr-calendar-full Article__meta__date" dangerouslySetInnerHTML={ this.getDate(this.state.post) } />
+                        <span className="Article__meta__author" dangerouslySetInnerHTML={ this.getAuthor(this.state.post) } />
+                        <span className="Article__meta__date" dangerouslySetInnerHTML={ this.getDate(this.state.post) } />
                     </div>
                 </header>
             </article>

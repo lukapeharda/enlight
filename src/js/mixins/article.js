@@ -22,10 +22,10 @@ export default {
         }
     },
     getAuthor: function(data) {
-        return { __html: data._embedded.author[0].name };
+        return { __html: '<span class="lnr lnr-user"></span>' + data._embedded.author[0].name };
     },
     getDate: function(data) {
         var date = new Date(data.date_gmt);
-        return { __html: '<time datetime="' + data.date_gmt + '">' + date.toLocaleDateString(navigator.language) + '</time>' }
+        return { __html: '<span class="lnr lnr-calendar-full"></span><time datetime="' + data.date_gmt + '">' + date.toLocaleDateString(navigator.language) + '</time>' }
     }
 };
