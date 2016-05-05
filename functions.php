@@ -30,14 +30,44 @@ function enlight_enqueue_assets()
 
     // Scripts
     wp_enqueue_script('enlight-main', get_template_directory_uri() . '/assets/js/main.js', array(), false, true);
-    wp_localize_script('enlight-main', 'enlight', array(
+    wp_localize_script('enlight-main', 'enlight', apply_filters('enlight_localize_script', array(
         'endpoint'      => home_url('wp-json'),
         'baseurl'       => home_url('/'),
         'loading'       => get_template_directory_uri() . '/assets/images/lp-logo-black.png',
         'title_default' => get_bloginfo('title'),
-    ));
+    ), 'enlight-main'));
 }
 add_action('wp_enqueue_scripts', 'enlight_enqueue_assets');
+
+function enlight_bootstrap_data($data, $script)
+{
+    if ($script !== 'enlight-main') {
+        return $data;
+    }
+
+    $posts = array();
+
+    global $wp_query;
+
+    while ($wp_query->have_posts()) {
+        $wp_query->the_post(); global $post;
+
+        $posts[$post->post_name] = array(
+            'id'                => get_the_ID(),
+            'title'             => array('rendered' => get_the_title()),
+            'format'            => get_post_format(),
+            'content'           => array('rendered' => apply_filters('the_content', get_the_content())),
+            'date_gmt'          => get_post_time('U', true),
+            '_embedded'         => array('author' => array(array('name' => get_the_author()))),
+            'highlight_color'   => get_post_meta(get_the_ID(), 'enlight_highlight_color', true),
+        );
+    }
+
+    $data['bootstrap'] = $posts;
+
+    return $data;
+}
+add_action('enlight_localize_script', 'enlight_bootstrap_data', 10, 2);
 
 /**
  * Change page post type permalink structure. So we can easily route with JS.

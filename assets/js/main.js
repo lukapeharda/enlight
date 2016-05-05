@@ -42414,16 +42414,23 @@
 
 	    componentDidMount: function componentDidMount() {
 	        var that = this;
-	        (0, _actions.fetchPage)(this.props.slug).then(function (data) {
-	            that.setState({
-	                page: data[0]
+
+	        if (enlight.bootstrap && enlight.bootstrap[this.props.slug]) {
+	            this.setState({
+	                page: enlight.bootstrap[this.props.slug]
 	            });
-	            return data[0];
-	        }).then(function (page) {
-	            that.setTitle(page);
-	        }).catch(function (error) {
-	            console.error(error);
-	        });
+	        } else {
+	            (0, _actions.fetchPage)(this.props.slug).then(function (data) {
+	                that.setState({
+	                    page: data[0]
+	                });
+	                return data[0];
+	            }).then(function (page) {
+	                that.setTitle(page);
+	            }).catch(function (error) {
+	                console.error(error);
+	            });
+	        }
 	    },
 
 	    render: function render() {
@@ -42496,16 +42503,23 @@
 
 	    componentDidMount: function componentDidMount() {
 	        var that = this;
-	        (0, _actions.fetchPost)(this.props.slug).then(function (data) {
-	            that.setState({
-	                post: data[0]
+
+	        if (enlight.bootstrap && enlight.bootstrap[this.props.slug]) {
+	            this.setState({
+	                post: enlight.bootstrap[this.props.slug]
 	            });
-	            return data[0];
-	        }).then(function (post) {
-	            that.setTitle(post);
-	        }).catch(function (error) {
-	            console.error(error);
-	        });
+	        } else {
+	            (0, _actions.fetchPost)(this.props.slug).then(function (data) {
+	                that.setState({
+	                    post: data[0]
+	                });
+	                return data[0];
+	            }).then(function (post) {
+	                that.setTitle(post);
+	            }).catch(function (error) {
+	                console.error(error);
+	            });
+	        }
 	    },
 
 	    render: function render() {

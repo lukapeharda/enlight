@@ -19,16 +19,23 @@ module.exports = React.createClass({
 
     componentDidMount: function () {
         var that = this;
-        fetchPage(this.props.slug).then(function(data) {
-            that.setState({
-                page: data[0]
+
+        if (enlight.bootstrap && enlight.bootstrap[this.props.slug]) {
+            this.setState({
+                page: enlight.bootstrap[this.props.slug]
             });
-            return data[0];
-        }).then(function(page) {
-            that.setTitle(page);
-        }).catch(function (error) {
-            console.error(error);
-        });
+        } else {
+            fetchPage(this.props.slug).then(function(data) {
+                that.setState({
+                    page: data[0]
+                });
+                return data[0];
+            }).then(function(page) {
+                that.setTitle(page);
+            }).catch(function (error) {
+                console.error(error);
+            });
+        }
     },
 
     render: function() {
