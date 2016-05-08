@@ -20,9 +20,9 @@ module.exports = React.createClass({
     componentDidMount: function () {
         var that = this;
 
-        if (enlight.bootstrap && enlight.bootstrap[this.props.slug]) {
+        if (enlight.bootstrap && enlight.bootstrap.posts && enlight.bootstrap.posts[this.props.slug]) {
             this.setState({
-                page: enlight.bootstrap[this.props.slug]
+                page: enlight.bootstrap.posts[this.props.slug]
             });
         } else {
             fetchPage(this.props.slug).then(function(data) {

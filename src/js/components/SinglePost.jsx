@@ -21,9 +21,9 @@ module.exports = React.createClass({
     componentDidMount: function () {
         var that = this;
 
-        if (enlight.bootstrap && enlight.bootstrap[this.props.slug]) {
+        if (enlight.bootstrap && enlight.bootstrap.posts && enlight.bootstrap.posts[this.props.slug]) {
             this.setState({
-                post: enlight.bootstrap[this.props.slug]
+                post: enlight.bootstrap.posts[this.props.slug]
             });
         } else {
             fetchPost(this.props.slug).then(function (data) {

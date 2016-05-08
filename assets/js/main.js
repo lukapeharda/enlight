@@ -20165,18 +20165,29 @@
 
 	    componentDidMount: function componentDidMount() {
 	        var that = this;
-	        (0, _actions.fetchPosts)(this.props.page).then(function (data) {
-	            that.setState({
-	                posts: data,
-	                next: data._paging && data._paging.next,
-	                prev: data._paging && data._paging.prev
+	        console.log(this.props.page, enlight.bootstrap.page);
+	        if (enlight.bootstrap && enlight.bootstrap.posts && Object.keys(enlight.bootstrap.posts).length > 0 && enlight.bootstrap.type && enlight.bootstrap.type === 'index' && enlight.bootstrap.page && enlight.bootstrap.page === this.props.page) {
+	            this.setState({
+	                posts: Object.keys(enlight.bootstrap.posts).map(function (key) {
+	                    return enlight.bootstrap.posts[key];
+	                }),
+	                next: enlight.bootstrap.pages < this.props.page,
+	                prev: this.props.page > 1
 	            });
-	            return data[0];
-	        }).then(function () {
-	            that.setTitle();
-	        }).catch(function (error) {
-	            console.error(error);
-	        });
+	        } else {
+	            (0, _actions.fetchPosts)(this.props.page).then(function (data) {
+	                that.setState({
+	                    posts: data,
+	                    next: data._paging && data._paging.next,
+	                    prev: data._paging && data._paging.prev
+	                });
+	                return data[0];
+	            }).then(function () {
+	                that.setTitle();
+	            }).catch(function (error) {
+	                console.error(error);
+	            });
+	        }
 	    },
 
 	    componentDidUpdate: function componentDidUpdate(prevProps) {
@@ -42415,9 +42426,9 @@
 	    componentDidMount: function componentDidMount() {
 	        var that = this;
 
-	        if (enlight.bootstrap && enlight.bootstrap[this.props.slug]) {
+	        if (enlight.bootstrap && enlight.bootstrap.posts && enlight.bootstrap.posts[this.props.slug]) {
 	            this.setState({
-	                page: enlight.bootstrap[this.props.slug]
+	                page: enlight.bootstrap.posts[this.props.slug]
 	            });
 	        } else {
 	            (0, _actions.fetchPage)(this.props.slug).then(function (data) {
@@ -42504,9 +42515,9 @@
 	    componentDidMount: function componentDidMount() {
 	        var that = this;
 
-	        if (enlight.bootstrap && enlight.bootstrap[this.props.slug]) {
+	        if (enlight.bootstrap && enlight.bootstrap.posts && enlight.bootstrap.posts[this.props.slug]) {
 	            this.setState({
-	                post: enlight.bootstrap[this.props.slug]
+	                post: enlight.bootstrap.posts[this.props.slug]
 	            });
 	        } else {
 	            (0, _actions.fetchPost)(this.props.slug).then(function (data) {

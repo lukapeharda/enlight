@@ -22,18 +22,31 @@ module.exports = React.createClass({
 
     componentDidMount: function () {
         var that = this;
-        fetchPosts(this.props.page).then(function(data) {
-            that.setState({
-                posts: data,
-                next: data._paging && data._paging.next,
-                prev: data._paging && data._paging.prev,
+console.log(this.props.page, enlight.bootstrap.page);
+        if (enlight.bootstrap
+        && enlight.bootstrap.posts && Object.keys(enlight.bootstrap.posts).length > 0
+        && enlight.bootstrap.type && enlight.bootstrap.type === 'index'
+        && enlight.bootstrap.page && enlight.bootstrap.page === this.props.page) {
+            this.setState({
+                posts: Object.keys(enlight.bootstrap.posts).map(function(key) { return enlight.bootstrap.posts[key]; }),
+                next: enlight.bootstrap.pages < this.props.page,
+                prev: this.props.page > 1,
             });
-            return data[0];
-        }).then(function() {
-            that.setTitle();
-        }).catch(function (error) {
-            console.error(error);
-        });
+        } else {
+            fetchPosts(this.props.page).then(function(data) {
+                that.setState({
+                    posts: data,
+                    next: data._paging && data._paging.next,
+                    prev: data._paging && data._paging.prev,
+                });
+                return data[0];
+            }).then(function() {
+                that.setTitle();
+            }).catch(function (error) {
+                console.error(error);
+            });
+        }
+
     },
 
     componentDidUpdate: function(prevProps) {

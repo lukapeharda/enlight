@@ -54,16 +54,33 @@ function enlight_bootstrap_data($data, $script)
 
         $posts[$post->post_name] = array(
             'id'                => get_the_ID(),
+            'link'              => get_the_permalink(),
             'title'             => array('rendered' => get_the_title()),
             'format'            => get_post_format(),
             'content'           => array('rendered' => apply_filters('the_content', get_the_content())),
-            'date_gmt'          => get_post_time('U', true),
+            'date_gmt'          => get_post_time('c', true),
             '_embedded'         => array('author' => array(array('name' => get_the_author()))),
             'highlight_color'   => get_post_meta(get_the_ID(), 'enlight_highlight_color', true),
         );
     }
 
-    $data['bootstrap'] = $posts;
+    $type = 'index';
+    $page = get_query_var('paged') ?: 1;
+
+    if (is_single()) {
+        $type = 'post';
+        $page = null;
+    } else if (is_page()) {
+        $type = 'page';
+        $page = null;
+    }
+
+    $data['bootstrap'] = array(
+        'posts' => $posts,
+        'type'  => $type,
+        'page'  => $page,
+        'pages' => $wp_query->max_num_pages,
+    );
 
     return $data;
 }
