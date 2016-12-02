@@ -39,6 +39,12 @@ function enlight_enqueue_assets()
 }
 add_action('wp_enqueue_scripts', 'enlight_enqueue_assets');
 
+/**
+ * Bootstrap post data from main loop.
+ * @param  string $data
+ * @param  string $script
+ * @return array
+ */
 function enlight_bootstrap_data($data, $script)
 {
     if ($script !== 'enlight-main') {

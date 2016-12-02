@@ -42557,7 +42557,7 @@
 	                            _react2.default.createElement('span', { className: 'Article__meta__date', dangerouslySetInnerHTML: this.getDate(this.state.post) })
 	                        )
 	                    ),
-	                    _react2.default.createElement('div', { className: 'Article__content', dangerouslySetInnerHTML: this.getContent(this.state.post) })
+	                    _react2.default.createElement('div', { className: 'Article__content', dangerouslySetInnerHTML: eval(this.getContent(this.state.post)) })
 	                )
 	            );
 	        }
